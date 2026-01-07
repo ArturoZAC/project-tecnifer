@@ -1,0 +1,40 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Archivos de logs en la raíz
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules generales si hay algún package.json en la raíz
+node_modules/
+
+# Dependencias de Composer si hubiera algo en la raíz
+vendor/
+
+# Archivos de cache
+.cache/
+.env
+.env.local
+.env.*.local
+
+# Archivos de IDE/editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Builds o carpetas generadas
+dist/
+build/
+public/storage/
+storage/
+
+# Otros temporales
+*.bak
+*.tmp
+*.swp
