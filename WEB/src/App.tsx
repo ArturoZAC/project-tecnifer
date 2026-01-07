@@ -6,7 +6,7 @@ import PublicLayout from "./layout/PublicLayout";
 function App() {
   return (
     <>
-      <BrowserRouter basename="/landing_page/plantilla9/">
+      <BrowserRouter basename="/landing_page/tecnifer/">
         <Routes>
           <Route path="/" element={<PublicLayout />}>
             <Route index element={<Inicio />} />
