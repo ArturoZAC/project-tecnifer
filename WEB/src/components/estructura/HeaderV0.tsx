@@ -1,88 +1,112 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Logo from "../../assets/logo1.png"
-import Container from "../features/Container"
-import { AnimatePresence, motion } from "motion/react"
-import { BiMenu, BiX, BiPhone, BiEnvelope, BiTime, BiMapPin, BiUser, BiChat } from "react-icons/bi"
-import { BsX, BsFacebook, BsInstagram, BsWhatsapp, BsLinkedin, BsTelephone } from "react-icons/bs"
-import { scrollToElement } from "../../logic/scrollToElement"
+import { useEffect, useState } from "react";
+import Logo from "../../assets/LOGO-COLOR.png";
+import LogoWhite from "../../assets/LOGO-WHITE.png";
+// import Logo from "../../assets/logo1.png";
+import Container from "../features/Container";
+import { AnimatePresence, motion } from "motion/react";
+import { BiMenu, BiX, BiPhone, BiEnvelope, BiTime, BiMapPin, BiChat } from "react-icons/bi";
+import { BsX, /* BsLinkedin, */ BsTelephone } from "react-icons/bs";
+import { scrollToElement } from "../../logic/scrollToElement";
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTiktok,
+  IconBrandWhatsapp,
+} from "@tabler/icons-react";
+import { enviarWhatsapp } from "../../helpers/enviarWhatsapp";
 
 export default function HeaderV0() {
-  const [isTop, setIsTop] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [currentTime, setCurrentTime] = useState(new Date())
+  const [isTop, setIsTop] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   function handleScroll() {
     if (window.scrollY > 100) {
-      setIsTop(true)
+      setIsTop(true);
     } else {
-      setIsTop(false)
+      setIsTop(false);
     }
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Actualizar hora cada minuto
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(new Date())
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Cerrar menú móvil cuando se redimensiona la pantalla
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false)
+        setIsMobileMenuOpen(false);
       }
-    }
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const menuItems = [
     { href: "#inicio", label: "Inicio" },
     { href: "#nosotros", label: "Nosotros" },
     { href: "#servicios", label: "Servicios" },
-    { href: "#proyectos", label: "Proyectos" },
+    { href: "#proyectos", label: "Trabajos" },
     { href: "#contacto", label: "Contacto" },
-  ]
+  ];
 
   const contactInfo = {
-    phone: "+1 (555) 123-4567",
-    email: "info@empresa.com",
-    address: "123 Calle Principal, Ciudad",
+    phone: "+51 985 053 727",
+    email: "proyectos@tecnifer.pe",
+    address: "Mz Q Lt 29 Bellavista II Etapa Independencia Lima",
     hours: "Lun-Vie: 9:00-18:00",
-  }
+  };
 
   const socialLinks = [
-    { icon: BsFacebook, href: "#", label: "Facebook", color: "hover:text-blue-600" },
-    { icon: BsInstagram, href: "#", label: "Instagram", color: "hover:text-pink-600" },
-    { icon: BsWhatsapp, href: "#", label: "WhatsApp", color: "hover:text-green-600" },
-    { icon: BsLinkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-700" },
-  ]
+    {
+      icon: IconBrandFacebook,
+      href: "https://www.facebook.com/share/1CixsxYa8f/",
+      label: "Facebook",
+      color: "hover:text-blue-600",
+    },
+    {
+      icon: IconBrandInstagram,
+      href: "https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2",
+      label: "Instagram",
+      color: "hover:text-pink-600",
+    },
+    {
+      icon: IconBrandTiktok,
+      href: "https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070",
+      label: "WhatsApp",
+      color: "hover:text-zinc-600",
+    },
+    // { icon: BsLinkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-700" },
+  ];
 
   const handleMenuClick = (href: string) => {
-    setIsMobileMenuOpen(false)
-    const element = document.querySelector(href)
+    setIsMobileMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   const isBusinessHours = () => {
-    const now = new Date()
-    const hour = now.getHours()
-    const day = now.getDay()
-    return day >= 1 && day <= 5 && hour >= 9 && hour < 18
-  }
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay();
+    return day >= 1 && day <= 5 && hour >= 9 && hour < 18;
+  };
 
   return (
     <>
@@ -91,8 +115,9 @@ export default function HeaderV0() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`hidden lg:block w-full py-2 text-sm ${isTop ? "bg-gray-100 text-gray-700" : "bg-secondary text-white backdrop-blur-sm"
-          } transition-all duration-300`}
+        className={`hidden lg:block w-full py-2 text-sm ${
+          isTop ? "bg-gray-100 text-gray-700" : "bg-secondary text-white backdrop-blur-sm"
+        } transition-all duration-300`}
       >
         <Container className="flex justify-between items-center">
           <div className="flex items-center gap-6">
@@ -105,8 +130,12 @@ export default function HeaderV0() {
               <span>{contactInfo.email}</span>
             </div>
             <div className="flex items-center gap-2">
-              <BiTime className={`text-sm ${isBusinessHours() ? "text-green-400" : "text-red-400"}`} />
-              <span className={`${isBusinessHours() ? "text-green-400" : "text-red-400"}`}>{contactInfo.hours}</span>
+              <BiTime
+                className={`text-sm ${isBusinessHours() ? "text-green-400" : "text-red-400"}`}
+              />
+              <span className={`${isBusinessHours() ? "text-green-400" : "text-red-400"}`}>
+                {contactInfo.hours}
+              </span>
             </div>
           </div>
 
@@ -122,6 +151,7 @@ export default function HeaderV0() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   aria-label={social.label}
+                  target="_blank"
                 >
                   <social.icon size={16} />
                 </motion.a>
@@ -131,7 +161,7 @@ export default function HeaderV0() {
               {currentTime.toLocaleTimeString("es-ES", {
                 hour: "2-digit",
                 minute: "2-digit",
-                second: "2-digit"
+                second: "2-digit",
               })}
             </div>
           </div>
@@ -143,17 +173,23 @@ export default function HeaderV0() {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`w-full py-3 lg:py-4 fixed z-50 ${isTop ? "bg-white/95 backdrop-blur-md shadow-lg text-black" : "bg-transparent text-white"
-          } duration-300 transition-all ${isTop ? "top-0" : "lg:top-10 top-0"}`}
+        className={`w-full py-3 lg:py-4 fixed z-50 ${
+          isTop ? "bg-white/95 backdrop-blur-md shadow-lg text-black" : "bg-transparent text-white"
+        } duration-300 transition-all ${isTop ? "top-0" : "lg:top-10 top-0"}`}
       >
         <Container className="flex justify-between items-center">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
-            <img src={Logo || "/placeholder.svg"} alt="logo" className="w-20 lg:w-24" />
-            <div className={`hidden sm:block ${isTop ? "text-gray-700" : "text-white"}`}>
+            {isTop ? (
+              <img src={Logo || "/placeholder.svg"} alt="logo" className="max-w-64" />
+            ) : (
+              <img src={LogoWhite || "/placeholder.svg"} alt="logo" className="max-w-64" />
+            )}
+            {/* <img src={Logo || "/placeholder.svg"} alt="logo" className="w-20 lg:w-24" /> */}
+            {/* <div className={`hidden sm:block ${isTop ? "text-gray-700" : "text-white"}`}>
               <div className="font-bold text-lg">Aquitecture</div>
               <div className="text-xs opacity-75">Soluciones Profesionales</div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -161,14 +197,14 @@ export default function HeaderV0() {
             {menuItems.map((item, index) => (
               <motion.button
                 key={item.href}
-
                 onClick={(e) => {
-                  e.preventDefault()
-                  handleMenuClick(item.href)
-                  scrollToElement(item.href, 100)
+                  e.preventDefault();
+                  handleMenuClick(item.href);
+                  scrollToElement(item.href, 100);
                 }}
-                className={`relative transition-colors duration-200 hover:text-blue-400 ${isTop ? "hover:text-primary" : "hover:text-secondary"
-                  }`}
+                className={`relative transition-colors duration-200 hover:text-blue-400 ${
+                  isTop ? "hover:text-primary" : "hover:text-secondary"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -187,36 +223,56 @@ export default function HeaderV0() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <motion.a
+            {/* <motion.a
               href="tel:+15551234567"
-              className={`flex items-center gap-2 fancy px-4 bg-primary py-2 rounded-full border-2 transition-all duration-200 ${isTop
-                ? "border-secondary text-blue-600 hover:bg-secondary hover:text-white"
-                : "border-white text-white hover:bg-primary hover:text-black"
-                }`}
+              className={`flex items-center gap-2 fancy px-4 bg-primary py-2 rounded-full border-2 transition-all duration-200 ${
+                isTop
+                  ? "border-secondary text-blue-600 hover:bg-secondary hover:text-white"
+                  : "border-white text-white hover:bg-primary hover:text-black"
+              }`}
               whileTap={{ scale: 0.95 }}
             >
               <span className="top-key bg-primary"></span>
               <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                <BsTelephone size={16} />
-                <span>Llamar</span>
+                <IconBrandWhatsapp size={20} />
+                <span>Cotizar Ahora</span>
               </span>
               <span className="bottom-key-1 bg-primary"></span>
               <span className="bottom-key-2 bg-primary"></span>
-            </motion.a>
+            </motion.a> */}
 
             <motion.button
-              className={`bg-secondary ${isTop ? 'hover:bg-primary' : ''} fancy ${isTop ? 'border-2 bg-secondary' : 'border-2 border-white'} text-white px-6 py-2 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg`}
-            
+              type="button"
+              onClick={() => enviarWhatsapp()}
+              className={`flex items-center gap-2 fancy px-4 bg-primary py-2 rounded-full border-2 transition-all duration-200 ${
+                isTop
+                  ? "border-secondary text-blue-600 hover:bg-secondary hover:text-white"
+                  : "border-white text-white hover:bg-primary hover:text-black"
+              }`}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="top-key bg-primary"></span>
+              <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
+                <IconBrandWhatsapp size={20} />
+                <span>Cotizar Ahora</span>
+              </span>
+              <span className="bottom-key-1 bg-primary"></span>
+              <span className="bottom-key-2 bg-primary"></span>
+            </motion.button>
+
+            <motion.button
+              className={`bg-secondary ${isTop ? "hover:bg-primary" : ""} fancy ${
+                isTop ? "border-2 bg-secondary" : "border-2 border-white"
+              } text-white px-6 py-2 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg`}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToElement("#contacto", 100)}
             >
-              
-              <span className={`top-key ${isTop ? '' : 'bg-secondary'}`}></span>
+              <span className={`top-key ${isTop ? "" : "bg-secondary"}`}></span>
               <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                Cotizar Proyecto
+                Contactar
               </span>
-              <span className={`bottom-key-1 ${isTop ? '' : 'bg-secondary'}`}></span>
-              <span className={`bottom-key-2 ${isTop ? '' : 'bg-secondary'}`}></span>
+              <span className={`bottom-key-1 ${isTop ? "" : "bg-secondary"}`}></span>
+              <span className={`bottom-key-2 ${isTop ? "" : "bg-secondary"}`}></span>
             </motion.button>
           </div>
 
@@ -279,11 +335,11 @@ export default function HeaderV0() {
                 {/* Mobile Menu Header */}
                 <div className="flex justify-between items-center mb-6">
                   <div className="flex items-center gap-3">
-                    <img src={Logo || "/placeholder.svg"} alt="logo" className="w-16" />
-                    <div>
+                    <img src={Logo || "/placeholder.svg"} alt="logo" className="w-52" />
+                    {/* <div>
                       <div className="font-bold text-gray-800">Arquitecture</div>
                       <div className="text-xs text-gray-500">Soluciones Profesionales</div>
-                    </div>
+                    </div> */}
                   </div>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -317,8 +373,11 @@ export default function HeaderV0() {
                       <BiTime size={16} />
                       <span className="font-medium text-sm">{contactInfo.hours}</span>
                       <span
-                        className={`ml-auto text-xs px-2 py-1 rounded-full ${isBusinessHours() ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"
-                          }`}
+                        className={`ml-auto text-xs px-2 py-1 rounded-full ${
+                          isBusinessHours()
+                            ? "bg-green-200 text-green-800"
+                            : "bg-red-200 text-red-800"
+                        }`}
                       >
                         {isBusinessHours() ? "Abierto" : "Cerrado"}
                       </span>
@@ -331,19 +390,18 @@ export default function HeaderV0() {
                   {menuItems.map((item, index) => (
                     <motion.button
                       key={item.href}
-
                       onClick={(e) => {
-                        e.preventDefault()
-                        handleMenuClick(item.href)
-                        scrollToElement(item.href, 100)
+                        e.preventDefault();
+                        handleMenuClick(item.href);
+                        scrollToElement(item.href, 100);
                       }}
-                      className="flex items-center w-full gap-3 py-3 px-4 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                      className="flex items-center w-full gap-3 py-3 px-4 text-secondary font-medium rounded-lg hover:bg-primary/30 hover:text-secondary transition-colors duration-200"
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <BiUser size={18} />
+                      {/* <BiUser size={18} /> */}
                       {item.label}
                     </motion.button>
                   ))}
@@ -357,7 +415,7 @@ export default function HeaderV0() {
                   transition={{ duration: 0.3, delay: 0.4 }}
                 >
                   <motion.a
-                    href="tel:+15551234567"
+                    href="tel:+51985053727"
                     className="flex items-center justify-center gap-2 w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -373,7 +431,7 @@ export default function HeaderV0() {
                     onClick={() => handleMenuClick("#contacto")}
                   >
                     <BiChat size={18} />
-                    Cotizar Proyecto
+                    Contactar
                   </motion.button>
                 </motion.div>
 
@@ -384,7 +442,9 @@ export default function HeaderV0() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.5 }}
                 >
-                  <p className="text-sm text-gray-500 text-center mb-4">Síguenos en redes sociales</p>
+                  <p className="text-sm text-gray-500 text-center mb-4">
+                    Síguenos en redes sociales
+                  </p>
                   <div className="flex justify-center gap-4">
                     {socialLinks.map((social, index) => (
                       <motion.a
@@ -397,6 +457,7 @@ export default function HeaderV0() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
                         aria-label={social.label}
+                        target="_blank"
                       >
                         <social.icon size={20} />
                       </motion.a>
@@ -415,7 +476,9 @@ export default function HeaderV0() {
                     <BiMapPin size={16} />
                     <span>{contactInfo.address}</span>
                   </div>
-                  <div className="text-xs text-gray-400">© 2025 Arquitecture. Todos los derechos reservados.</div>
+                  <div className="text-xs text-gray-400">
+                    © 2026 Tecnifer. Todos los derechos reservados.
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -423,5 +486,5 @@ export default function HeaderV0() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

@@ -1,43 +1,78 @@
-import { useState, type SetStateAction } from "react";
+import { useEffect, useState, type SetStateAction } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import Banner1 from "../../assets/banner/banner1.webp"
-import Banner2 from "../../assets/banner/banner2.webp"
-import Banner3 from "../../assets/banner/banner3.webp"
-import Banner4 from "../../assets/banner/banner4.webp"
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import Banner1 from "../../assets/banner/banner01-tec.webp";
+import Banner2 from "../../assets/banner/banner02-tec.webp";
+import Banner3 from "../../assets/banner/banner03-tec.webp";
+// import Banner4 from "../../assets/banner/banner4.webp";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok } from "@tabler/icons-react";
+// import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export default function SwiperBanner() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // const slides = [
+  //   {
+  //     id: 1,
+  //     title: "Diseñamos espacios que hablan por ti",
+  //     subtitle:
+  //       "Transforma tu visión en una obra arquitectónica que refleja tu identidad y estilo de vida.",
+  //     image: Banner1,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Construimos ideas, habitamos sueños",
+  //     subtitle: "Más que planos y paredes, entregamos lugares donde tus sueños toman forma.",
+  //     image: Banner2, // Sin imagen, usará background
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Tu proyecto merece más que un diseño: merece alma",
+  //     subtitle: "Creamos espacios únicos, con personalidad, que trascienden el tiempo.",
+  //     image: Banner3,
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Imaginamos contigo, construimos para ti",
+  //     subtitle:
+  //       "Te acompañamos desde la primera idea hasta el último detalle, porque tu proyecto también es nuestro.",
+  //     image: Banner4, // Sin imagen, usará background
+  //   },
+  // ];
+
   const slides = [
     {
       id: 1,
-      title: "Diseñamos espacios que hablan por ti",
-      subtitle: "Transforma tu visión en una obra arquitectónica que refleja tu identidad y estilo de vida.",
+      title: "Soluciones confiables en electricidad",
+      // title: "Soluciones eléctricas que protegen y optimizan",
+      subtitle:
+        "Diseñamos y fabricamos tableros eléctricos seguros y eficientes para proyectos residenciales, comerciales e industriales.",
       image: Banner1,
-      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      // background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     },
     {
       id: 2,
-      title: "Construimos ideas, habitamos sueños",
-      subtitle: "Más que planos y paredes, entregamos lugares donde tus sueños toman forma.",
-      image: Banner2, // Sin imagen, usará background
-      background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      title: "Energía confiable desde la base",
+      subtitle:
+        "Instalamos y mantenemos sistemas de puesta a tierra que garantizan seguridad eléctrica y protección total.",
+      image: Banner2,
+      // background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
     },
     {
       id: 3,
-      title: "Tu proyecto merece más que un diseño: merece alma",
-      subtitle: "Creamos espacios únicos, con personalidad, que trascienden el tiempo.",
+      title: "Electrobombas que trabajan sin detenerse",
+      subtitle:
+        "Instalación y mantenimiento de electrobombas para un funcionamiento eficiente y duradero.",
       image: Banner3,
-      background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+      // background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     },
-    {
-      id: 4,
-      title: "Imaginamos contigo, construimos para ti",
-      subtitle: "Te acompañamos desde la primera idea hasta el último detalle, porque tu proyecto también es nuestro.",
-      image: Banner4, // Sin imagen, usará background
-      background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
-    }
+    // {
+    //   id: 4,
+    //   title: "Experiencia técnica que marca la diferencia",
+    //   subtitle:
+    //     "Nuestro equipo especializado te acompaña con soluciones eléctricas personalizadas y de alta calidad.",
+    //   image: Banner4,
+    //   background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+    // },
   ];
 
   const nextSlide = () => {
@@ -52,6 +87,14 @@ export default function SwiperBanner() {
     setCurrentSlide(index);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 9000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   return (
     <div className="relative w-full h-screen overflow-hidden" id="inicio">
       {/* Slides Container */}
@@ -59,11 +102,10 @@ export default function SwiperBanner() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide
-                ? 'opacity-100 scale-100 z-30'
-                : 'opacity-0 scale-110'
-              }`}
-            style={slide.image ? {} : { background: slide.background }}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100 scale-100 z-30" : "opacity-0 scale-110"
+            }`}
+            // style={slide.image ? {} : { background: slide.background }}
           >
             {/* Background Image */}
             {slide.image && (
@@ -71,49 +113,62 @@ export default function SwiperBanner() {
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${slide.image})` }}
               >
-                <div className="absolute inset-0 bg-black/30"></div>
+                <div className="absolute inset-0 bg-black/80"></div>
               </div>
             )}
             {/* Content */}
             <div className="flex items-center justify-center h-full relative z-10">
               <div className="text-center text-white px-8 max-w-4xl">
                 <h1
-                  className={`text-4xl md:text-6xl lg:text-7xl font-bold text-red-200 mb-6 transition-all duration-1200 delay-300 ${index === currentSlide
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                    }`}
+                  className={`text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-6 transition-all duration-1200 delay-300 ${
+                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
                 >
                   {slide.title}
                 </h1>
                 <p
-                  className={`text-xl md:text-xl font-light opacity-90 transition-all duration-1200 delay-500 ${index === currentSlide
-                      ? 'opacity-90 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                    }`}
+                  className={`text-xl md:text-xl font-semibold opacity-90 transition-all duration-1200 delay-500 ${
+                    index === currentSlide ? "opacity-90 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
                 >
                   {slide.subtitle}
                 </p>
 
-                <nav className={`flex justify-center gap-4 mt-6 transition-all duration-1200 delay-500 ${index === currentSlide
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-8'
-                }`}>
-                  <a href="#" className="hover:text-secondary duration-300 transition-all">
-                    <FaFacebook size={20} />
+                <nav
+                  className={`flex justify-center gap-4 mt-6 transition-all duration-1200 delay-500 ${
+                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  <a
+                    href="https://www.facebook.com/share/1CixsxYa8f/"
+                    className="hover:text-secondary duration-300 transition-all"
+                    target="_blank"
+                  >
+                    {/* <FaFacebook size={20} /> */}
+                    <IconBrandFacebook size={20} />
                   </a>
-                  <a href="#" className="hover:text-secondary duration-300 transition-all">
-                    <FaInstagram size={20} />
+                  <a
+                    href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
+                    className="hover:text-secondary duration-300 transition-all"
+                    target="_blank"
+                  >
+                    {/* <FaInstagram size={20} /> */}
+                    <IconBrandInstagram size={20} />
                   </a>
-                  <a href="#" className="hover:text-secondary duration-300 transition-all">
-                    <FaTiktok size={20} />
+                  <a
+                    href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
+                    className="hover:text-secondary duration-300 transition-all"
+                    target="_blank"
+                  >
+                    {/* <FaTiktok size={20} /> */}
+                    <IconBrandTiktok size={20} />
                   </a>
                 </nav>
 
                 <div
-                  className={`mt-6 transition-all duration-1200 delay-700 ${index === currentSlide
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                    }`}
+                  className={`mt-6 transition-all duration-1200 delay-700 ${
+                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
                 >
                   <div className="w-24 h-0.5 bg-white/50 mx-auto"></div>
                 </div>
@@ -123,19 +178,19 @@ export default function SwiperBanner() {
             {/* Geometric decoration */}
             <div className="absolute top-10 right-3 md:right-5 lg:right-10 z-10">
               <div
-                className={`w-32 h-32 border border-white/20 rotate-45 transition-all duration-1500 delay-200 ${index === currentSlide
-                    ? 'opacity-100 scale-100 rotate-45'
-                    : 'opacity-0 scale-50 rotate-0'
-                  }`}
+                className={`w-32 h-32 border border-white/20 rotate-45 transition-all duration-1500 delay-200 ${
+                  index === currentSlide
+                    ? "opacity-100 scale-100 rotate-45"
+                    : "opacity-0 scale-50 rotate-0"
+                }`}
               ></div>
             </div>
 
             <div className="absolute bottom-10 left-10 z-10">
               <div
-                className={`w-24 h-24 rounded-full border border-white/20 transition-all duration-1500 delay-400 ${index === currentSlide
-                    ? 'opacity-100 scale-100'
-                    : 'opacity-0 scale-50'
-                  }`}
+                className={`w-24 h-24 rounded-full border border-white/20 transition-all duration-1500 delay-400 ${
+                  index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                }`}
               ></div>
             </div>
           </div>
@@ -173,10 +228,9 @@ export default function SwiperBanner() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                ? 'bg-primary scale-125'
-                : 'bg-white/40 hover:bg-white/60'
-              }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-primary scale-125" : "bg-white/40 hover:bg-white/60"
+            }`}
             aria-label={`Ir al slide ${index + 1}`}
           />
         ))}
@@ -185,7 +239,7 @@ export default function SwiperBanner() {
       {/* Auto-play functionality */}
       <div className="absolute top-8 left-8 z-10">
         <div className="text-white/60 text-sm font-light">
-          {String(currentSlide + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+          {String(currentSlide + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
         </div>
       </div>
     </div>

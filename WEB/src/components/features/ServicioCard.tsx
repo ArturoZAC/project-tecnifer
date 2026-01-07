@@ -1,76 +1,110 @@
-import type { IconType } from "react-icons"
-import { FaDraftingCompass, FaBuilding, FaCubes, FaSketch, FaHardHat, FaTree } from "react-icons/fa"
-import { motion } from "motion/react"
+import { motion } from "motion/react";
+import { scrollToElement } from "../../logic/scrollToElement";
+import { BsSend, BsWhatsapp } from "react-icons/bs";
+import { enviarWhatsapp } from "../../helpers/enviarWhatsapp";
+
+import service01 from "../../assets/services/service01-tec.webp";
+import service02 from "../../assets/services/service02-tec.webp";
+import service03 from "../../assets/services/service03-tec.webp";
+import service04 from "../../assets/services/service04-tec.webp";
+import service05 from "../../assets/services/service05-tec.webp";
+import service06 from "../../assets/services/service06-tec.webp";
 
 export interface Servicio {
-  icon: IconType
-  nombre: string
-  descripcion: string
+  // icon: IconType;
+  image: string;
+  nombre: string;
+  descripcion: string;
 }
 
 const serviciosData = [
   {
-    icon: FaDraftingCompass,
-    nombre: "Diseño Arquitectónico",
-    descripcion: "Creamos diseños innovadores, funcionales y personalizados para todo tipo de espacios."
+    image: service01,
+    nombre: "Fabricación de Tableros Eléctricos",
+    descripcion:
+      "Diseñamos y fabricamos tableros eléctricos a medida, garantizando seguridad, eficiencia y cumplimiento de normas técnicas.",
   },
   {
-    icon: FaBuilding,
-    nombre: "Diseño de Interiores",
-    descripcion: "Transformamos interiores en ambientes únicos que combinan estética y comodidad."
+    image: service02,
+    nombre: "Mantenimiento de Tableros Eléctricos",
+    descripcion:
+      "Realizamos mantenimiento preventivo y correctivo para asegurar el óptimo funcionamiento de tableros eléctricos.",
   },
   {
-    icon: FaCubes,
-    nombre: "Modelado 3D y Renderizado",
-    descripcion: "Visualiza tu proyecto antes de construirlo con renders realistas y recorridos virtuales."
+    image: service03,
+    nombre: "Sistemas de Puesta a Tierra",
+    descripcion:
+      "Implementamos sistemas de puesta a tierra que protegen equipos, instalaciones y personas ante fallas eléctricas.",
   },
   {
-    icon: FaSketch,
-    nombre: "Planificación y Anteproyecto",
-    descripcion: "Desarrollamos propuestas preliminares con visión técnica y creativa para tomar decisiones acertadas."
+    image: service04,
+    nombre: "Instalación de Electrobombas",
+    descripcion:
+      "Instalamos electrobombas eficientes y confiables para aplicaciones industriales, comerciales y residenciales.",
   },
   {
-    icon: FaHardHat,
-    nombre: "Supervisión de Obra",
-    descripcion: "Aseguramos que la ejecución se realice según los planos, tiempos y calidad establecidos."
+    image: service05,
+    nombre: "Mantenimiento de Electrobombas",
+    descripcion:
+      "Brindamos mantenimiento técnico especializado para prolongar la vida útil y el rendimiento de electrobombas.",
   },
   {
-    icon: FaTree,
-    nombre: "Diseño Sostenible",
-    descripcion: "Aplicamos soluciones ecológicas y eficientes para construir de manera responsable con el entorno."
-  }
-]
+    image: service06,
+    nombre: "Soporte Técnico Eléctrico",
+    descripcion:
+      "Ofrecemos soporte técnico eléctrico especializado con soluciones rápidas, seguras y adaptadas a cada proyecto.",
+  },
+];
 
 export default function ServicioSection() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
-      {
-        serviciosData.map((servicio, index) => (
-          <ServicioCard servicio={servicio} numero={index} key={index} />
-        ))
-      }
+      {serviciosData.map((servicio, index) => (
+        <ServicioCard servicio={servicio} numero={index} key={index} />
+      ))}
     </div>
-  )
+  );
 }
 
-function ServicioCard({ servicio, numero }: { servicio: Servicio, numero: number }) {
+function ServicioCard({ servicio /* numero */ }: { servicio: Servicio; numero: number }) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ scale: 0 }}
       whileInView={{ scale: 1 }}
       transition={{ duration: 0.3 }}
-      whileHover={{ y: -5, transition: {
-        duration: 0.1
-      } }}
-      className="shadow-lg w-full space-y-2 cursor-default bg-white duration-300 transition-all"
+      whileHover={{ y: -5, transition: { duration: 0.1 } }}
+      className="bg-white rounded-xl shadow-lg overflow-hidden"
     >
-      <div className={`w-14 h-14 flex justify-center items-center ${numero % 2 === 0 ? 'bg-secondary' : 'bg-primary'} rounded-br-xl text-white`}>
-        <servicio.icon size={28} />
-      </div>
-      <div className="space-y-2 p-3">
+      {/* IMAGEN */}
+      <img src={servicio.image} alt={servicio.nombre} className="w-full h-48 object-cover" />
+
+      {/* CONTENIDO */}
+      <div className="p-4 space-y-3">
         <h3 className="font-bold text-lg">{servicio.nombre}</h3>
-        <p>{servicio.descripcion}</p>
+        <p className="text-sm text-gray-600">{servicio.descripcion}</p>
+
+        <div className="flex gap-3 border-t pt-4 border-gray-200">
+          <button
+            onClick={() => scrollToElement("#contacto", 100)}
+            className="flex-1 bg-white group text-secondary fancy hover:bg-primary border-2 border-secondary font-medium px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          >
+            <span className="text flex items-center gap-2">
+              <BsSend size={20} />
+              Contacto
+            </span>
+          </button>
+
+          <button
+            onClick={() => enviarWhatsapp(`Hola! requiero de este servicio: ${servicio.nombre} 😁`)}
+            className="flex-1 text-white group border-2 hover:bg-green-600 border-green-600 fancy font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          >
+            <span className="text text-green-600 flex items-center gap-2">
+              <BsWhatsapp size={20} />
+              WhatsApp
+            </span>
+          </button>
+        </div>
       </div>
     </motion.div>
-  )
+  );
 }

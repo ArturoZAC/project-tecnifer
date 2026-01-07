@@ -1,7 +1,8 @@
 import Container from "../components/features/Container";
 import SwiperBanner from "../components/features/SwiperBanner";
 
-import AsideNosotros from "../assets/images/asideNosotros.webp"
+import AsideNosotros from "../assets/pruebaNosotros.webp";
+// import AsideNosotros from "../assets/images/asideNosotros.webp";
 // import Edificios from "../assets/images/edificios.png"
 
 import { motion } from "motion/react";
@@ -9,16 +10,14 @@ import ServicioSection from "../components/features/ServicioCard";
 import ProyectosSection from "../components/features/ProyectosSection";
 import ContactoSection from "../components/features/ContactoSection";
 import { scrollToElement } from "../logic/scrollToElement";
+import { IconEye, IconTargetArrow } from "@tabler/icons-react";
 
 export default function Inicio() {
-
-
-
   return (
     <div className="overflow-hidden">
       <SwiperBanner />
       <section className="w-full bg-slate-50" id="nosotros">
-        <Container className="py-10 space-y-6">
+        {/* <Container className="py-10 space-y-6">
           <section className="flex gap-4 items-center lg:flex-row flex-col">
             <motion.div
               initial={{ opacity: 0, x: -100 }}
@@ -30,49 +29,26 @@ export default function Inicio() {
                 ¿Porque <span className="text-primary">elegirnos?</span>
               </h2>
               <div className="space-y-3">
-                <p >
-                  En <strong>Arquitecture</strong>, diseñamos espacios que trascienden lo estético: creamos soluciones arquitectónicas que inspiran, funcionan y perduran en el tiempo.
+                <p>
+                  En <strong>Arquitecture</strong>, diseñamos espacios que trascienden lo estético:
+                  creamos soluciones arquitectónicas que inspiran, funcionan y perduran en el
+                  tiempo.
                 </p>
-                <p >
-                  Somos un equipo apasionado de arquitectos, diseñadores y profesionales técnicos con una visión clara: transformar ideas en estructuras que mejoren la calidad de vida de quienes las habitan. Desde nuestra fundación en 2020, hemos trabajado en proyectos residenciales, comerciales, corporativos y urbanos, destacándonos por nuestra atención al detalle, compromiso con la sostenibilidad y enfoque humano en cada diseño.
+                <p>
+                  Somos un equipo apasionado de arquitectos, diseñadores y profesionales técnicos
+                  con una visión clara: transformar ideas en estructuras que mejoren la calidad de
+                  vida de quienes las habitan. Desde nuestra fundación en 2020, hemos trabajado en
+                  proyectos residenciales, comerciales, corporativos y urbanos, destacándonos por
+                  nuestra atención al detalle, compromiso con la sostenibilidad y enfoque humano en
+                  cada diseño.
                 </p>
-                <p >
-                  Creemos que la arquitectura no solo moldea ciudades, sino también historias. Por eso, colaboramos de cerca con nuestros clientes en cada etapa del proceso, entendiendo sus necesidades y convirtiéndolas en espacios únicos y funcionales, donde la forma y la función se encuentran en equilibrio
+                <p>
+                  Creemos que la arquitectura no solo moldea ciudades, sino también historias. Por
+                  eso, colaboramos de cerca con nuestros clientes en cada etapa del proceso,
+                  entendiendo sus necesidades y convirtiéndolas en espacios únicos y funcionales,
+                  donde la forma y la función se encuentran en equilibrio
                 </p>
               </div>
-
-              {/*
-              <h2 className="text-4xl font-bold text-black">
-                Nos <span className="text-primary">respalda</span>
-              </h2>
-
-               <div className="flex gap-4">
-                <div className="w-full space-y-3">
-                  <p className="text-4xl font-bold text-secondary">+ 25</p>
-                  <p className="text-xl">Proyectos</p>
-                </div>
-                <div className="w-full space-y-3">
-                  <p className="text-4xl font-bold text-secondary">+ 3</p>
-                  <p className="text-xl">Años de experiencia</p>
-                </div>
-              </div> */}
-
-              {/* <div className="w-full flex gap-3 lg:flex-row flex-col">
-                <div className="w-full lg:w-1/2 p-3 rounded-xl space-y-3">
-                  <h3 className="font-bold text-3xl">Visión</h3>
-                  <p>
-                    Diseñar y construir espacios únicos que combinen estética, funcionalidad y sostenibilidad, superando las expectativas de nuestros clientes y mejorando su calidad de vida.
-                  </p>
-                </div>
-
-                <div className="w-full lg:w-1/2 rounded-xl space-y-3">
-                  <h3>Misión</h3>
-                  <p>
-                    Ser reconocidos como la empresa de arquitectura líder en diseño integral y experiencia del cliente, transformando sueños en espacios habitables que inspiren y perduren.
-                  </p>
-                </div>
-              </div> */}
-
             </motion.div>
             <div className="lg:w-1/2 w-full">
               <motion.img
@@ -85,12 +61,101 @@ export default function Inicio() {
               />
             </div>
           </section>
+        </Container> */}
+
+        {/* <Container className="py-14 space-y-14"> */}
+        <Container className="py-14 space-y-14 relative">
+          <div className="absolute top-20 -left-16 w-36 h-36 bg-primary/30 rounded-full blur-3xl -z-9" />
+          <section className="flex gap-10 items-center lg:flex-row flex-col">
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6 lg:w-1/2 w-full"
+            >
+              <h2 className="text-4xl font-bold text-secondary">
+                ¿Por qué <span className="text-primary">elegirnos?</span>
+              </h2>
+
+              <p className="md:text-justify text-start">
+                En <strong className="text-secondary">TECNIFER SAC</strong> brindamos soluciones
+                eléctricas confiables y seguras, especializándonos en tableros eléctricos, sistemas
+                de puesta a tierra y electrobombas para proyectos residenciales, comerciales e
+                industriales.
+              </p>
+
+              <p className="md:text-justify text-start">
+                Fundada en 2018 por técnicos con amplia experiencia en el sector eléctrico, nuestra
+                empresa trabaja con tecnología avanzada y procedimientos certificados, garantizando
+                seguridad, eficiencia energética y calidad en cada servicio.
+              </p>
+
+              <p className="md:text-justify text-start">
+                Nos enfocamos en brindar un servicio rápido, eficiente y personalizado, acompañando
+                a nuestros clientes en cada etapa para proteger y optimizar sus instalaciones
+                eléctricas e hidráulicas.
+              </p>
+            </motion.div>
+
+            {/* IMAGEN */}
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2 w-full"
+            >
+              <img
+                src={AsideNosotros}
+                alt="Equipo técnico TECNIFER"
+                className="w-full rounded-2xl"
+              />
+            </motion.div>
+          </section>
+
+          {/* MISIÓN & VISIÓN */}
+          <motion.section
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-2 gap-6 relative"
+          >
+            <div className="bg-white rounded-2xl p-6 space-y-4">
+              <div className="flex items-center gap-3 text-primary justify-center">
+                <IconTargetArrow size={32} />
+                <h3 className="text-2xl font-bold">Misión</h3>
+              </div>
+              <p className="text-center">
+                Brindar soluciones eléctricas confiables y seguras en tableros eléctricos, puesta a
+                tierra y electrobombas, garantizando eficiencia, satisfacción del cliente y altos
+                estándares técnicos.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 space-y-4">
+              <div className="flex items-center gap-3 text-primary justify-center">
+                <IconEye size={32} />
+                <h3 className="text-2xl font-bold">Visión</h3>
+              </div>
+              <p className="text-center">
+                Ser la empresa líder en soluciones eléctricas, reconocida por su calidad, innovación
+                y compromiso con la seguridad, impulsando un crecimiento sostenible continuo.
+              </p>
+            </div>
+            <div className="absolute bottom-20 -right-24 w-36 h-36 -top-52 bg-secondary/90 rounded-full blur-3xl -z-9" />
+          </motion.section>
         </Container>
 
-        <section className="bg-secondary w-full py-8 text-white">
+        <section className="bg-secondary w-full py-20 text-white">
           <Container className="flex flex-col gap-9 items-center">
-            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-center">Transformamos tus ideas en espacios funcionales, estéticos y sostenibles. Cada proyecto es una solución personalizada que refleja tu estilo y necesidad, con diseño de calidad y visión arquitectónica.</p>
-            <button onClick={() => scrollToElement('#proyectos', 100)} className="px-4 py-2 group hover:bg-primary bg-transparent fancy hover:before:bg-white before:bg-white text-white text-sm border-2 border-white  hover:text-white duration-300 transition-colors max-lg:text-sm">
+            <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-center">
+              Transformamos tus necesidades en soluciones eléctricas seguras, eficientes y
+              duraderas. Cada proyecto es una solución personalizada que protege tus instalaciones y
+              optimiza su funcionamiento, con altos estándares técnicos y calidad profesional.
+            </p>
+            <button
+              onClick={() => scrollToElement("#contacto", 100)}
+              className="px-4 py-2 group hover:bg-primary bg-transparent fancy hover:before:bg-white before:bg-white text-white text-sm border-2 border-white  hover:text-white duration-300 transition-colors max-lg:text-sm"
+            >
               <span className="top-key bg-secondary group-hover:bg-secondary"></span>
               <span className="text text-white Poppins-Font ps-8">Contactar</span>
               <span className="bottom-key-1 bg-secondary"></span>
@@ -113,20 +178,52 @@ export default function Inicio() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center mt-3 mb-16"
+              className="text-center mt-3 mb-16 text-secondary font-semibold"
             >
-              Diseñamos espacios, construimos sueños.
+              Protegemos y optimizamos tus instalaciones eléctricas.
             </motion.p>
 
             <ServicioSection />
           </Container>
         </section>
 
-        <section className="w-full py-5 bg-primary text-white" >
+        {/* <section className="w-full py-5 bg-primary text-white">
           <Container className="flex flex-col items-center gap-3">
-            <p className="text-xl md:text-2xl lg:text-3xl text-center font-medium">Contáctanos hoy y cuéntanos tu idea. Nuestro equipo de arquitectos está listo para brindarte una atención personalizada y soluciones creativas a la medida de tus necesidades.</p>
+            <p className="text-xl md:text-2xl lg:text-3xl text-center font-medium">
+              Contáctanos hoy y cuéntanos tu idea. Nuestro equipo de arquitectos está listo para
+              brindarte una atención personalizada y soluciones creativas a la medida de tus
+              necesidades.
+            </p>
             <p className="text-center my-2">¡Tu próximo proyecto comienza con una conversación!</p>
-            <button onClick={() => scrollToElement("#contacto", 100)} className="px-4 py-2 w-fit fancy text-black hover:bg-secondary hover:text-white hover:before:bg-white border-2 border-white before:bg-white duration-300 transition-colors">
+            <button
+              onClick={() => scrollToElement("#contacto", 100)}
+              className="px-4 py-2 w-fit fancy text-black hover:bg-secondary hover:text-white hover:before:bg-white border-2 border-white before:bg-white duration-300 transition-colors"
+            >
+              <span className="top-key bg-primary group-hover:bg-secondary"></span>
+              <span className="text text-white Poppins-Font ps-8">Contáctanos</span>
+              <span className="bottom-key-1 bg-primary"></span>
+              <span className="bottom-key-2 bg-primary"></span>
+            </button>
+          </Container>
+        </section> */}
+
+        <section className="w-full py-16 bg-primary text-white">
+          <Container className="flex flex-col items-center gap-3">
+            <p className="text-xl md:text-2xl lg:text-3xl text-center font-medium">
+              Contáctanos hoy y cuéntanos tu requerimiento.
+            </p>
+
+            <p className="text-center my-2 text-lg">
+              Nuestro equipo técnico está listo para brindarte una atención personalizada y
+              soluciones eléctricas seguras, eficientes y a la medida de tus necesidades.
+            </p>
+
+            <p className="text-center my-2">Tu proyecto comienza con una solución confiable.</p>
+
+            <button
+              onClick={() => scrollToElement("#contacto", 100)}
+              className="px-4 py-2 w-fit fancy text-black hover:bg-secondary hover:text-white hover:before:bg-white border-2 border-white before:bg-white duration-300 transition-colors"
+            >
               <span className="top-key bg-primary group-hover:bg-secondary"></span>
               <span className="text text-white Poppins-Font ps-8">Contáctanos</span>
               <span className="bottom-key-1 bg-primary"></span>
@@ -137,7 +234,18 @@ export default function Inicio() {
 
         <section className="w-full py-9 bg-slate-50" id="proyectos">
           <Container className="space-y-8">
-            <h2 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl">Proyectos que <span className="text-primary">hemos diseñado</span></h2>
+            <div className="space-y-3">
+              <h2 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl">
+                Nuestros <span className="text-primary">Trabajos</span>
+              </h2>
+
+              <p className="text-center max-w-3xl mx-auto text-gray-600">
+                Desde 2018, en TECNIFER SAC hemos ejecutado trabajos en tableros eléctricos,
+                sistemas de puesta a tierra y electrobombas para proyectos residenciales,
+                comerciales e industriales. Cada servicio refleja nuestro compromiso con la
+                seguridad, la calidad técnica y la confianza de nuestros clientes.
+              </p>
+            </div>
 
             <ProyectosSection />
           </Container>
@@ -145,14 +253,12 @@ export default function Inicio() {
 
         <section className="w-full bg-slate-50 text-black" id="contacto">
           <Container>
-
             <section className="flex lg:flex-row flex-col gap-5">
               <ContactoSection />
             </section>
           </Container>
         </section>
-
       </section>
     </div>
-  )
+  );
 }

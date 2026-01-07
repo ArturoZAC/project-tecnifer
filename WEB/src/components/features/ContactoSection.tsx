@@ -1,55 +1,55 @@
-import React, { useState } from 'react'
-import { BiMapPin, BiPhone } from 'react-icons/bi';
-import { BsInstagram, BsTwitter } from 'react-icons/bs';
-import { FaFacebook } from 'react-icons/fa';
-import { LiaLinkedin } from 'react-icons/lia';
-import { RiMvAiLine } from 'react-icons/ri';
-import { SiEndeavouros } from 'react-icons/si';
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTiktok,
+  IconMessageChatbot,
+} from "@tabler/icons-react";
+import React, { useState } from "react";
+import { BiMapPin, BiPhone } from "react-icons/bi";
+import { RiMvAiLine } from "react-icons/ri";
 
 export default function ContactoSection() {
-
   const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    mensaje: ''
+    nombre: "",
+    email: "",
+    telefono: "",
+    mensaje: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Aquí puedes agregar la lógica para enviar el formulario
-    console.log('Datos del formulario:', formData);
-    alert('¡Mensaje enviado! Te contactaremos pronto.');
+    console.log("Datos del formulario:", formData);
+    alert("¡Mensaje enviado! Te contactaremos pronto.");
 
     // Limpiar formulario
     setFormData({
-      nombre: '',
-      email: '',
-      telefono: '',
-      mensaje: ''
+      nombre: "",
+      email: "",
+      telefono: "",
+      mensaje: "",
     });
   };
-  console.log(handleSubmit)
+  console.log(handleSubmit);
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4">
+    <section className="py-16 px-4">
+      {/* <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4"> */}
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Ponte en Contacto
-          </h2>
+          <h2 className="text-4xl font-bold text-secondary mb-4">Ponte en Contacto</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            ¿Tienes alguna pregunta o proyecto en mente? Nos encantaría escucharte.
-            Completa el formulario o contáctanos directamente.
+            Estamos listos para ayudarte con instalación, mantenimiento o soporte eléctrico.
+            Escríbenos y recibe atención personalizada.
           </p>
         </div>
 
@@ -57,38 +57,40 @@ export default function ContactoSection() {
           {/* Información de contacto y redes sociales */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-2xl font-semibold text-secondary mb-6">
                 Información de Contacto
               </h3>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="bg-blue-200 p-3 rounded-full">
+                  <div className="bg-primary/80 p-3 rounded-full">
                     <RiMvAiLine className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Email</p>
-                    <p className="text-gray-600">contacto@empresa.com</p>
+                    <p className="font-medium text-secondary">Email</p>
+                    <p className="text-gray-600">proyectos@tecnifer.pe</p>
+                    <p className="text-gray-600">tecnifer.info@gmail.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-blue-200 p-3 rounded-full">
+                  <div className="bg-primary/80 p-3 rounded-full">
                     <BiPhone className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Teléfono</p>
-                    <p className="text-gray-600">+51 999 999 999</p>
+                    <p className="font-medium text-secondary">Teléfono</p>
+                    <p className="text-gray-600">+51 985 053 727</p>
+                    <p className="text-gray-600">+51 966 659 7948</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-blue-200 p-3 rounded-full">
+                  <div className="bg-primary/80 p-3 rounded-full">
                     <BiMapPin className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Ubicación</p>
-                    <p className="text-gray-600">Lima, Perú</p>
+                    <p className="font-medium text-secondary">Ubicación</p>
+                    <p className="text-gray-600">Independencia, Lima, Perú</p>
                   </div>
                 </div>
               </div>
@@ -96,58 +98,47 @@ export default function ContactoSection() {
 
             {/* Redes sociales */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Síguenos
-              </h3>
+              <h3 className="text-2xl font-semibold text-secondary mb-6">Síguenos</h3>
 
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/share/1CixsxYa8f/"
+                  target="_blank"
                   className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-200"
                 >
-                  <FaFacebook className="w-6 h-6" />
+                  <IconBrandFacebook className="w-6 h-6" />
                 </a>
 
                 <a
-                  href="#"
-                  className="bg-sky-500 hover:bg-sky-600 text-white p-3 rounded-full transition-colors duration-200"
-                >
-                  <BsTwitter className="w-6 h-6" />
-                </a>
-
-                <a
-                  href="#"
+                  href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
+                  target="_blank"
                   className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors duration-200"
                 >
-                  <BsInstagram className="w-6 h-6" />
+                  <IconBrandInstagram className="w-6 h-6" />
                 </a>
-
                 <a
-                  href="#"
-                  className="bg-blue-800 hover:bg-blue-900 text-white p-3 rounded-full transition-colors duration-200"
+                  href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
+                  target="_blank"
+                  className="bg-zinc-500 hover:bg-zinc-600 text-white p-3 rounded-full transition-colors duration-200"
                 >
-                  <LiaLinkedin className="w-6 h-6" />
+                  <IconBrandTiktok className="w-6 h-6" />
                 </a>
               </div>
             </div>
 
             {/* Mensaje adicional */}
             <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                ¿Prefieres llamarnos?
-              </h4>
+              <h4 className="font-semibold text-secondary mb-2">¿Prefieres llamarnos?</h4>
               <p className="text-gray-600 text-sm">
-                Estamos disponibles de lunes a viernes de 9:00 AM a 6:00 PM.
-                No dudes en contactarnos para cualquier consulta.
+                Estamos disponibles de lunes a viernes de 9:00 AM a 6:00 PM. No dudes en
+                contactarnos para cualquier consulta.
               </p>
             </div>
           </div>
 
           {/* Formulario de contacto */}
           <div className="bg-white p-8 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-              Envíanos un Mensaje
-            </h3>
+            <h3 className="text-2xl font-semibold text-secondary mb-6">Envíanos un Mensaje</h3>
 
             <div className="space-y-6">
               <div>
@@ -219,7 +210,8 @@ export default function ContactoSection() {
               >
                 <span className="top-key bg-white"></span>
                 <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                  <SiEndeavouros className="w-5 h-5" />
+                  {/* <SiEndeavouros className="w-5 h-5" /> */}
+                  <IconMessageChatbot size={25} />
                   Enviar Mensaje
                 </span>
                 <span className="bottom-key-1 bg-white"></span>
