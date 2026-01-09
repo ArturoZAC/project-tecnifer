@@ -6,6 +6,9 @@ import Proyecto3 from "../../assets/proyectos/trabajo03-tec.webp";
 import Proyecto4 from "../../assets/proyectos/trabajo04-tec.webp";
 import Proyecto5 from "../../assets/proyectos/trabajo05-tec.webp";
 import Proyecto6 from "../../assets/proyectos/trabajo06-tec.webp";
+import Proyecto7 from "../../assets/proyectos/add01.webp";
+import Proyecto8 from "../../assets/proyectos/add02.webp";
+import Proyecto9 from "../../assets/proyectos/add03.webp";
 import Lightbox from "yet-another-react-lightbox";
 import { IconCircleDashedCheck } from "@tabler/icons-react";
 
@@ -57,17 +60,17 @@ import { IconCircleDashedCheck } from "@tabler/icons-react";
 //   },
 // ];
 
-const images = [Proyecto1, Proyecto2, Proyecto3, Proyecto4, Proyecto5, Proyecto6];
-
-// export default function ProyectosSection() {
-//   return (
-//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//       {proyectosData.map((proyecto, index) => (
-//         <ProyectoCard proyecto={proyecto} key={index} />
-//       ))}
-//     </div>
-//   );
-// }
+const images = [
+  Proyecto1,
+  Proyecto2,
+  Proyecto3,
+  Proyecto4,
+  Proyecto5,
+  Proyecto6,
+  Proyecto7,
+  Proyecto8,
+  Proyecto9,
+];
 
 export default function ProyectosSection() {
   const [open, setOpen] = useState(false);

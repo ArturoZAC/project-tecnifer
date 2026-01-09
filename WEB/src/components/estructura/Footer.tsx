@@ -26,12 +26,15 @@ export default function Footer() {
     { nombre: "Sistemas de Puesta a Tierra", link: "#servicios" },
     { nombre: "Instalación de Electrobombas", link: "#servicios" },
     { nombre: "Mantenimiento de Electrobombas", link: "#servicios" },
-    { nombre: "Soporte Técnico Eléctrico", link: "#servicios" },
+    { nombre: "Instalaciones Eléctricas", link: "#servicios" },
+    { nombre: "Servicios Complementarios", link: "#servicios" },
   ];
 
   const contactoInfo = {
-    email: "proyectos@tecnifer.pe",
+    email: "tecnifer.info@gmail.com",
+    email2: "proyectos@tecnifer.pe",
     telefono: "+51 985 053 727",
+    telefono2: "+51 966 597 948",
     direccion: "Independencia, Lima, Perú",
   };
 
@@ -144,12 +147,21 @@ export default function Footer() {
                 <RiMvAiLine size={16} className="text-blue-300 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-blue-200 text-sm">Email</p>
-                  <a
-                    href={`mailto:${contactoInfo.email}`}
-                    className="text-white text-sm hover:text-blue-300 transition-colors"
-                  >
-                    {contactoInfo.email}
-                  </a>
+                  <div className="flex flex-col">
+                    <a
+                      href={`mailto:${contactoInfo.email}`}
+                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                    >
+                      {contactoInfo.email}
+                    </a>
+
+                    <a
+                      href={`mailto:${contactoInfo.email}`}
+                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                    >
+                      {contactoInfo.email}
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -157,12 +169,20 @@ export default function Footer() {
                 <BiPhone size={16} className="text-blue-300 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-blue-200 text-sm">Teléfono</p>
-                  <a
-                    href={`tel:${contactoInfo.telefono}`}
-                    className="text-white text-sm hover:text-blue-300 transition-colors"
-                  >
-                    {contactoInfo.telefono}
-                  </a>
+                  <div className="flex flex-col">
+                    <a
+                      href={`tel:${contactoInfo.telefono}`}
+                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                    >
+                      {contactoInfo.telefono}
+                    </a>
+                    <a
+                      href={`tel:${contactoInfo.telefono}`}
+                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                    >
+                      {contactoInfo.telefono2}
+                    </a>
+                  </div>
                 </div>
               </div>
 

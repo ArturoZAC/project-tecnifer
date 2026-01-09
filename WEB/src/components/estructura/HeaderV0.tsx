@@ -66,7 +66,7 @@ export default function HeaderV0() {
 
   const contactInfo = {
     phone: "+51 985 053 727",
-    email: "proyectos@tecnifer.pe",
+    email: "tecnifer.info@gmail.com",
     address: "Mz Q Lt 29 Bellavista II Etapa Independencia Lima",
     hours: "Lun-Vie: 9:00-18:00",
   };

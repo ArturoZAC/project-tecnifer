@@ -3,9 +3,9 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import Banner1 from "../../assets/banner/banner01-tec.webp";
 import Banner2 from "../../assets/banner/banner02-tec.webp";
 import Banner3 from "../../assets/banner/banner03-tec.webp";
-// import Banner4 from "../../assets/banner/banner4.webp";
+import BannerX from "../../assets/banner/finalimage.webp";
+import BannerY from "../../assets/banner/banner04-off.webp";
 import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok } from "@tabler/icons-react";
-// import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export default function SwiperBanner() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,66 +13,63 @@ export default function SwiperBanner() {
   // const slides = [
   //   {
   //     id: 1,
-  //     title: "Diseñamos espacios que hablan por ti",
+  //     title: "Instalaciones eléctricas profesionales",
   //     subtitle:
-  //       "Transforma tu visión en una obra arquitectónica que refleja tu identidad y estilo de vida.",
+  //       "Desarrollamos e implementamos instalaciones eléctricas seguras y eficientes, garantizando continuidad operativa y cumplimiento normativo.",
   //     image: Banner1,
   //   },
   //   {
   //     id: 2,
-  //     title: "Construimos ideas, habitamos sueños",
-  //     subtitle: "Más que planos y paredes, entregamos lugares donde tus sueños toman forma.",
-  //     image: Banner2, // Sin imagen, usará background
+  //     title: "Servicios complementarios para tu infraestructura",
+  //     subtitle:
+  //       "Ofrecemos soluciones en aire acondicionado, gasfitería, drywall y pintura, completando proyectos integrales con calidad técnica.",
+  //     image: Banner2,
   //   },
   //   {
   //     id: 3,
-  //     title: "Tu proyecto merece más que un diseño: merece alma",
-  //     subtitle: "Creamos espacios únicos, con personalidad, que trascienden el tiempo.",
-  //     image: Banner3,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Imaginamos contigo, construimos para ti",
+  //     title: "Electrobombas que trabajan sin detenerse",
   //     subtitle:
-  //       "Te acompañamos desde la primera idea hasta el último detalle, porque tu proyecto también es nuestro.",
-  //     image: Banner4, // Sin imagen, usará background
+  //       "Instalación y mantenimiento de electrobombas para un funcionamiento eficiente y duradero.",
+  //     image: Banner3,
   //   },
   // ];
 
   const slides = [
     {
       id: 1,
-      title: "Soluciones confiables en electricidad",
-      // title: "Soluciones eléctricas que protegen y optimizan",
+      title: "Instalaciones eléctricas profesionales",
       subtitle:
-        "Diseñamos y fabricamos tableros eléctricos seguros y eficientes para proyectos residenciales, comerciales e industriales.",
+        "Implementamos instalaciones eléctricas seguras y eficientes para proyectos residenciales, comerciales e industriales.",
       image: Banner1,
-      // background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     },
     {
       id: 2,
-      title: "Energía confiable desde la base",
+      title: "Tableros eléctricos de alto desempeño",
       subtitle:
-        "Instalamos y mantenemos sistemas de puesta a tierra que garantizan seguridad eléctrica y protección total.",
-      image: Banner2,
-      // background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "Fabricación y mantenimiento de tableros eléctricos garantizando seguridad y continuidad operativa.",
+      image: BannerX,
     },
     {
       id: 3,
+      title: "Sistemas de puesta a tierra",
+      subtitle:
+        "Protección integral para instalaciones, equipos y personas mediante sistemas de puesta a tierra.",
+      image: BannerY,
+    },
+    {
+      id: 4,
       title: "Electrobombas que trabajan sin detenerse",
       subtitle:
         "Instalación y mantenimiento de electrobombas para un funcionamiento eficiente y duradero.",
       image: Banner3,
-      // background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     },
-    // {
-    //   id: 4,
-    //   title: "Experiencia técnica que marca la diferencia",
-    //   subtitle:
-    //     "Nuestro equipo especializado te acompaña con soluciones eléctricas personalizadas y de alta calidad.",
-    //   image: Banner4,
-    //   background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-    // },
+    {
+      id: 5,
+      title: "Servicios complementarios para tu infraestructura",
+      subtitle:
+        "Aire acondicionado, gasfitería, drywall y pintura para soluciones integrales con calidad técnica.",
+      image: Banner2,
+    },
   ];
 
   const nextSlide = () => {

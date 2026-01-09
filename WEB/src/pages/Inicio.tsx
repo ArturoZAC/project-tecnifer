@@ -78,22 +78,22 @@ export default function Inicio() {
               </h2>
 
               <p className="md:text-justify text-start">
-                En <strong className="text-secondary">TECNIFER SAC</strong> brindamos soluciones
-                eléctricas confiables y seguras, especializándonos en tableros eléctricos, sistemas
-                de puesta a tierra y electrobombas para proyectos residenciales, comerciales e
-                industriales.
+                En <strong className="text-secondary">TECNIFER SAC</strong> ofrecemos soluciones
+                integrales en
+                <strong> instalaciones eléctricas</strong>, tableros eléctricos, sistemas de puesta
+                a tierra y electrobombas para proyectos residenciales, comerciales e industriales.
               </p>
 
               <p className="md:text-justify text-start">
-                Fundada en 2018 por técnicos con amplia experiencia en el sector eléctrico, nuestra
-                empresa trabaja con tecnología avanzada y procedimientos certificados, garantizando
-                seguridad, eficiencia energética y calidad en cada servicio.
+                Fundada en 2018 por especialistas con amplia trayectoria en el sector eléctrico,
+                nuestra empresa trabaja con tecnología moderna y procedimientos certificados para
+                garantizar seguridad, eficiencia y cumplimiento normativo.
               </p>
 
               <p className="md:text-justify text-start">
-                Nos enfocamos en brindar un servicio rápido, eficiente y personalizado, acompañando
-                a nuestros clientes en cada etapa para proteger y optimizar sus instalaciones
-                eléctricas e hidráulicas.
+                Nos enfocamos en ofrecer un servicio técnico confiable, rápido y personalizado,
+                acompañando a cada cliente desde el diseño hasta la implementación para optimizar y
+                proteger sus instalaciones eléctricas.
               </p>
             </motion.div>
 
@@ -125,9 +125,11 @@ export default function Inicio() {
                 <h3 className="text-2xl font-bold">Misión</h3>
               </div>
               <p className="text-center">
-                Brindar soluciones eléctricas confiables y seguras en tableros eléctricos, puesta a
-                tierra y electrobombas, garantizando eficiencia, satisfacción del cliente y altos
-                estándares técnicos.
+                Brindar soluciones técnicas especializadas en instalaciones eléctricas, tableros
+                eléctricos, sistemas de puesta a tierra e instalaciones de electrobombas,
+                garantizando seguridad, eficiencia y continuidad operativa, cumpliendo con
+                estándares nacionales e internacionales y asegurando la satisfacción de nuestros
+                clientes.
               </p>
             </div>
 
@@ -137,8 +139,9 @@ export default function Inicio() {
                 <h3 className="text-2xl font-bold">Visión</h3>
               </div>
               <p className="text-center">
-                Ser la empresa líder en soluciones eléctricas, reconocida por su calidad, innovación
-                y compromiso con la seguridad, impulsando un crecimiento sostenible continuo.
+                Ser la empresa referente en instalaciones y soluciones eléctricas a nivel nacional,
+                destacando por la calidad técnica, la innovación continua y el compromiso con la
+                seguridad y la confiabilidad operativa.
               </p>
             </div>
             <div className="absolute bottom-20 -right-24 w-36 h-36 -top-52 bg-secondary/90 rounded-full blur-3xl -z-9" />
@@ -240,10 +243,10 @@ export default function Inicio() {
               </h2>
 
               <p className="text-center max-w-3xl mx-auto text-gray-600">
-                Desde 2018, en TECNIFER SAC hemos ejecutado trabajos en tableros eléctricos,
-                sistemas de puesta a tierra y electrobombas para proyectos residenciales,
-                comerciales e industriales. Cada servicio refleja nuestro compromiso con la
-                seguridad, la calidad técnica y la confianza de nuestros clientes.
+                Desde 2018, en TECNIFER SAC hemos ejecutado trabajos en instalaciones eléctricas,
+                tableros eléctricos, sistemas de puesta a tierra y electrobombas para proyectos
+                residenciales, comerciales e industriales. Cada servicio refleja nuestro compromiso
+                con la seguridad, la calidad técnica y la confianza de nuestros clientes.
               </p>
             </div>
 

@@ -68,8 +68,8 @@ export default function ContactoSection() {
                   </div>
                   <div>
                     <p className="font-medium text-secondary">Email</p>
-                    <p className="text-gray-600">proyectos@tecnifer.pe</p>
                     <p className="text-gray-600">tecnifer.info@gmail.com</p>
+                    <p className="text-gray-600">proyectos@tecnifer.pe</p>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ export default function ContactoSection() {
                   <div>
                     <p className="font-medium text-secondary">Teléfono</p>
                     <p className="text-gray-600">+51 985 053 727</p>
-                    <p className="text-gray-600">+51 966 659 7948</p>
+                    <p className="text-gray-600">+51 966 597 948</p>
                   </div>
                 </div>
 
