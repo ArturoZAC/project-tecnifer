@@ -69,7 +69,7 @@ export default function ContactoSection() {
                   <div>
                     <p className="font-medium text-secondary">Email</p>
                     <p className="text-gray-600">tecnifer.info@gmail.com</p>
-                    <p className="text-gray-600">proyectos@tecnifer.pe</p>
+                    <p className="text-gray-600">proyectos@tecnifer.com.pe</p>
                   </div>
                 </div>
 

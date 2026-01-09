@@ -21,18 +21,18 @@ export default function Footer() {
   // ];
 
   const servicios = [
+    { nombre: "Instalaciones Eléctricas", link: "#servicios" },
     { nombre: "Fabricación de Tableros Eléctricos", link: "#servicios" },
     { nombre: "Mantenimiento de Tableros Eléctricos", link: "#servicios" },
     { nombre: "Sistemas de Puesta a Tierra", link: "#servicios" },
     { nombre: "Instalación de Electrobombas", link: "#servicios" },
     { nombre: "Mantenimiento de Electrobombas", link: "#servicios" },
-    { nombre: "Instalaciones Eléctricas", link: "#servicios" },
     { nombre: "Servicios Complementarios", link: "#servicios" },
   ];
 
   const contactoInfo = {
     email: "tecnifer.info@gmail.com",
-    email2: "proyectos@tecnifer.pe",
+    email2: "proyectos@tecnifer.com.pe",
     telefono: "+51 985 053 727",
     telefono2: "+51 966 597 948",
     direccion: "Independencia, Lima, Perú",
@@ -156,10 +156,10 @@ export default function Footer() {
                     </a>
 
                     <a
-                      href={`mailto:${contactoInfo.email}`}
+                      href={`mailto:${contactoInfo.email2}`}
                       className="text-white text-sm hover:text-blue-300 transition-colors"
                     >
-                      {contactoInfo.email}
+                      {contactoInfo.email2}
                     </a>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ export default function Footer() {
                       {contactoInfo.telefono}
                     </a>
                     <a
-                      href={`tel:${contactoInfo.telefono}`}
+                      href={`tel:${contactoInfo.telefono2}`}
                       className="text-white text-sm hover:text-blue-300 transition-colors"
                     >
                       {contactoInfo.telefono2}
