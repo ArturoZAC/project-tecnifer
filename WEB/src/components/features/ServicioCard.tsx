@@ -3,19 +3,22 @@ import { scrollToElement } from "../../logic/scrollToElement";
 import { BsSend, BsWhatsapp } from "react-icons/bs";
 import { enviarWhatsapp } from "../../helpers/enviarWhatsapp";
 
-import service01 from "../../assets/services/service01-tec.webp";
-import service02 from "../../assets/services/service02-tec.webp";
-import service03 from "../../assets/services/service03-tec.webp";
-import service04 from "../../assets/services/service04-tec.webp";
-import service05 from "../../assets/services/service05-tec.webp";
-import service06 from "../../assets/services/service06-tec.webp";
-import service07 from "../../assets/services/servicio07-tec.webp";
+// import service01 from "../../assets/services/service01-tec.webp";
+// import service02 from "../../assets/services/service02-tec.webp";
+// import service03 from "../../assets/services/service03-tec.webp";
+// import service04 from "../../assets/services/service04-tec.webp";
+// import service05 from "../../assets/services/service05-tec.webp";
+// import service06 from "../../assets/services/service06-tec.webp";
+// import service07 from "../../assets/services/servicio07-tec.webp";
+import { useServicesStore, type Service } from "../../store/services.store";
+import { getEnvs } from "../../helpers/getEnvs";
 
 export interface Servicio {
   // icon: IconType;
+  id: number;
+  title: string;
+  description: string;
   image: string;
-  nombre: string;
-  descripcion: string;
 }
 
 // const serviciosData = [
@@ -57,96 +60,102 @@ export interface Servicio {
 //   },
 // ];
 
-const serviciosData = [
-  {
-    image: service06,
-    nombre: "Instalaciones Eléctricas",
-    descripcion: `
-      <p class="text-gray-600">
-        Realizamos instalaciones eléctricas completas en proyectos residenciales, comerciales e
-        industriales, aplicando normas técnicas y garantizando seguridad y eficiencia.
-      </p>
-    `,
-  },
-  {
-    image: service01,
-    nombre: "Fabricación de Tableros Eléctricos",
-    descripcion: `
-      <p class="text-gray-600">
-        Diseñamos y fabricamos tableros eléctricos a medida, garantizando seguridad, eficiencia y
-        cumplimiento de normas técnicas según la necesidad del proyecto.
-      </p>
-    `,
-  },
-  {
-    image: service02,
-    nombre: "Mantenimiento de Tableros Eléctricos",
-    descripcion: `
-      <p class="text-gray-600">
-        Realizamos mantenimiento preventivo y correctivo para asegurar el óptimo funcionamiento de
-        tableros eléctricos en instalaciones residenciales, comerciales e industriales.
-      </p>
-    `,
-  },
-  {
-    image: service03,
-    nombre: "Sistemas de Puesta a Tierra",
-    descripcion: `
-      <p class="text-gray-600">
-        Implementamos sistemas de puesta a tierra que protegen equipos e instalaciones ante fallas
-        eléctricas, cumpliendo normas de seguridad y continuidad operativa.
-      </p>
-    `,
-  },
-  {
-    image: service04,
-    nombre: "Instalación de Electrobombas",
-    descripcion: `
-      <p class="text-gray-600">
-        Instalamos electrobombas eficientes y confiables para diferentes aplicaciones garantizando
-        rendimiento, seguridad y durabilidad en el sistema hidráulico.
-      </p>
-    `,
-  },
-  {
-    image: service05,
-    nombre: "Mantenimiento de Electrobombas",
-    descripcion: `
-      <p class="text-gray-600">
-        Brindamos mantenimiento técnico especializado para prolongar la vida útil de las
-        electrobombas, prevenir fallas y asegurar un funcionamiento continuo.
-      </p>
-    `,
-  },
+// const serviciosData = [
+//   {
+//     image: service06,
+//     nombre: "Instalaciones Eléctricas",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Realizamos instalaciones eléctricas completas en proyectos residenciales, comerciales e
+//         industriales, aplicando normas técnicas y garantizando seguridad y eficiencia.
+//       </p>
+//     `,
+//   },
+//   {
+//     image: service01,
+//     nombre: "Fabricación de Tableros Eléctricos",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Diseñamos y fabricamos tableros eléctricos a medida, garantizando seguridad, eficiencia y
+//         cumplimiento de normas técnicas según la necesidad del proyecto.
+//       </p>
+//     `,
+//   },
+//   {
+//     image: service02,
+//     nombre: "Mantenimiento de Tableros Eléctricos",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Realizamos mantenimiento preventivo y correctivo para asegurar el óptimo funcionamiento de
+//         tableros eléctricos en instalaciones residenciales, comerciales e industriales.
+//       </p>
+//     `,
+//   },
+//   {
+//     image: service03,
+//     nombre: "Sistemas de Puesta a Tierra",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Implementamos sistemas de puesta a tierra que protegen equipos e instalaciones ante fallas
+//         eléctricas, cumpliendo normas de seguridad y continuidad operativa.
+//       </p>
+//     `,
+//   },
+//   {
+//     image: service04,
+//     nombre: "Instalación de Electrobombas",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Instalamos electrobombas eficientes y confiables para diferentes aplicaciones garantizando
+//         rendimiento, seguridad y durabilidad en el sistema hidráulico.
+//       </p>
+//     `,
+//   },
+//   {
+//     image: service05,
+//     nombre: "Mantenimiento de Electrobombas",
+//     descripcion: `
+//       <p class="text-gray-600">
+//         Brindamos mantenimiento técnico especializado para prolongar la vida útil de las
+//         electrobombas, prevenir fallas y asegurar un funcionamiento continuo.
+//       </p>
+//     `,
+//   },
 
-  {
-    image: service07,
-    nombre: "Servicios Complementarios",
-    descripcion: `
-      <p class="mb-2 text-gray-600">
-        Ofrecemos servicios complementarios para el desarrollo integral de obras e infraestructura:
-      </p>
-      <ul class="list-disc list-inside text-gray-600">
-        <li>Aire acondicionado</li>
-        <li>Gasfitería</li>
-        <li>Drywall</li>
-        <li>Pintura</li>
-      </ul>
-    `,
-  },
-];
+//   {
+//     image: service07,
+//     nombre: "Servicios Complementarios",
+//     descripcion: `
+//       <p class="mb-2 text-gray-600">
+//         Ofrecemos servicios complementarios para el desarrollo integral de obras e infraestructura:
+//       </p>
+//       <ul class="list-disc list-inside text-gray-600">
+//         <li>Aire acondicionado</li>
+//         <li>Gasfitería</li>
+//         <li>Drywall</li>
+//         <li>Pintura</li>
+//       </ul>
+//     `,
+//   },
+// ];
 
 export default function ServicioSection() {
+  const servicesData = useServicesStore((state) => state.services);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
-      {serviciosData.map((servicio, index) => (
-        <ServicioCard servicio={servicio} numero={index} key={index} />
+      {servicesData.map((servicio, index) => (
+        <ServicioCard servicio={servicio} /* numero={index} */ key={index} />
       ))}
     </div>
   );
 }
 
-function ServicioCard({ servicio /* numero */ }: { servicio: Servicio; numero: number }) {
+const { VITE_API_URL_BASE } = getEnvs();
+
+function ServicioCard({ servicio }: { servicio: Service }) {
+  const fullUrlImage = `${VITE_API_URL_BASE}/${servicio.image}`;
+
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -156,16 +165,16 @@ function ServicioCard({ servicio /* numero */ }: { servicio: Servicio; numero: n
       className="bg-white rounded-xl shadow-lg overflow-hidden"
     >
       {/* IMAGEN */}
-      <img src={servicio.image} alt={servicio.nombre} className="w-full h-48 object-cover" />
+      <img src={fullUrlImage} alt={servicio.title} className="w-full h-48 object-cover" />
 
       {/* CONTENIDO */}
       <div className="p-4 space-y-3">
-        <h3 className="font-bold text-lg">{servicio.nombre}</h3>
+        <h3 className="font-bold text-lg">{servicio.title}</h3>
         {/* <p className="text-sm text-gray-600">{servicio.descripcion}</p> */}
 
         <div
           className="text-sm space-y-1"
-          dangerouslySetInnerHTML={{ __html: servicio.descripcion }}
+          dangerouslySetInnerHTML={{ __html: servicio.description }}
         />
 
         <div className="flex gap-3 border-t pt-4 border-gray-200">
@@ -180,7 +189,7 @@ function ServicioCard({ servicio /* numero */ }: { servicio: Servicio; numero: n
           </button>
 
           <button
-            onClick={() => enviarWhatsapp(`Hola! requiero de este servicio: ${servicio.nombre} 😁`)}
+            onClick={() => enviarWhatsapp(`Hola! requiero de este servicio: ${servicio.title} 😁`)}
             className="flex-1 text-white group border-2 hover:bg-green-600 border-green-600 fancy font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <span className="text text-green-600 flex items-center gap-2">

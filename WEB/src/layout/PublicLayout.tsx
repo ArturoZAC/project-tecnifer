@@ -4,8 +4,19 @@ import Footer from "../components/estructura/Footer";
 import HeaderV0 from "../components/estructura/HeaderV0";
 import { enviarWhatsapp } from "../helpers/enviarWhatsapp";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { useServicesStore } from "../store/services.store";
+import { useEffect } from "react";
 
 export default function PublicLayout() {
+  // const services = useServicesStore((state) => state.services);
+  const getServices = useServicesStore((state) => state.getServices);
+
+  // console.log({ services });
+
+  useEffect(() => {
+    getServices();
+  }, [getServices]);
+
   return (
     <div>
       <HeaderV0 />
