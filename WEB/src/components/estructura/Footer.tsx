@@ -11,24 +11,27 @@ import {
   IconBrandTiktok,
   IconLink,
 } from "@tabler/icons-react";
+import { useServicesStore } from "../../store/services.store";
 
 export default function Footer() {
-  // const proyectos = [
-  //   { nombre: "Residencia Moderna en Los Álamos", link: "#proyectos" },
-  //   { nombre: "Edificio Corporativo Nova", link: "#proyectos" },
-  //   { nombre: "Casa de Campo El Retiro", link: "#proyectos" },
-  //   { nombre: "Parque Lineal Río Verde", link: "#proyectos" },
+  const services = useServicesStore((state) => state.services);
+
+  // const servicios = [
+  //   { nombre: "Instalaciones Eléctricas", link: "#servicios" },
+  //   { nombre: "Fabricación de Tableros Eléctricos", link: "#servicios" },
+  //   { nombre: "Mantenimiento de Tableros Eléctricos", link: "#servicios" },
+  //   { nombre: "Sistemas de Puesta a Tierra", link: "#servicios" },
+  //   { nombre: "Instalación de Electrobombas", link: "#servicios" },
+  //   { nombre: "Mantenimiento de Electrobombas", link: "#servicios" },
+  //   { nombre: "Servicios Complementarios", link: "#servicios" },
   // ];
 
-  const servicios = [
-    { nombre: "Instalaciones Eléctricas", link: "#servicios" },
-    { nombre: "Fabricación de Tableros Eléctricos", link: "#servicios" },
-    { nombre: "Mantenimiento de Tableros Eléctricos", link: "#servicios" },
-    { nombre: "Sistemas de Puesta a Tierra", link: "#servicios" },
-    { nombre: "Instalación de Electrobombas", link: "#servicios" },
-    { nombre: "Mantenimiento de Electrobombas", link: "#servicios" },
-    { nombre: "Servicios Complementarios", link: "#servicios" },
-  ];
+  const newServicesFormat = services.map((service) => ({
+    nombre: service.title,
+    link: "#servicios",
+  }));
+
+  console.log({ newServicesFormat });
 
   const contactoInfo = {
     email: "tecnifer.info@gmail.com",
@@ -119,7 +122,7 @@ export default function Footer() {
               Servicios
             </h4>
             <ul className="space-y-2">
-              {servicios.map((servicio, index) => (
+              {newServicesFormat.map((servicio, index) => (
                 <li key={index}>
                   <button
                     onClick={() => scrollToElement(servicio.link, 100)}

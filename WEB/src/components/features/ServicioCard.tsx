@@ -2,14 +2,6 @@ import { motion } from "motion/react";
 import { scrollToElement } from "../../logic/scrollToElement";
 import { BsSend, BsWhatsapp } from "react-icons/bs";
 import { enviarWhatsapp } from "../../helpers/enviarWhatsapp";
-
-// import service01 from "../../assets/services/service01-tec.webp";
-// import service02 from "../../assets/services/service02-tec.webp";
-// import service03 from "../../assets/services/service03-tec.webp";
-// import service04 from "../../assets/services/service04-tec.webp";
-// import service05 from "../../assets/services/service05-tec.webp";
-// import service06 from "../../assets/services/service06-tec.webp";
-// import service07 from "../../assets/services/servicio07-tec.webp";
 import { useServicesStore, type Service } from "../../store/services.store";
 import { getEnvs } from "../../helpers/getEnvs";
 
@@ -21,123 +13,27 @@ export interface Servicio {
   image: string;
 }
 
-// const serviciosData = [
-//   {
-//     image: service01,
-//     nombre: "Fabricación de Tableros Eléctricos",
-//     descripcion:
-//       "Diseñamos y fabricamos tableros eléctricos a medida, garantizando seguridad, eficiencia y cumplimiento de normas técnicas.",
-//   },
-//   {
-//     image: service02,
-//     nombre: "Mantenimiento de Tableros Eléctricos",
-//     descripcion:
-//       "Realizamos mantenimiento preventivo y correctivo para asegurar el óptimo funcionamiento de tableros eléctricos.",
-//   },
-//   {
-//     image: service03,
-//     nombre: "Sistemas de Puesta a Tierra",
-//     descripcion:
-//       "Implementamos sistemas de puesta a tierra que protegen equipos, instalaciones y personas ante fallas eléctricas.",
-//   },
-//   {
-//     image: service04,
-//     nombre: "Instalación de Electrobombas",
-//     descripcion:
-//       "Instalamos electrobombas eficientes y confiables para aplicaciones industriales, comerciales y residenciales.",
-//   },
-//   {
-//     image: service05,
-//     nombre: "Mantenimiento de Electrobombas",
-//     descripcion:
-//       "Brindamos mantenimiento técnico especializado para prolongar la vida útil y el rendimiento de electrobombas.",
-//   },
-//   {
-//     image: service06,
-//     nombre: "Soporte Técnico Eléctrico",
-//     descripcion:
-//       "Ofrecemos soporte técnico eléctrico especializado con soluciones rápidas, seguras y adaptadas a cada proyecto.",
-//   },
-// ];
+const normalizeHtml = (html: string) => {
+  return (
+    html
+      // entidades
+      .replace(/&nbsp;/g, " ")
 
-// const serviciosData = [
-//   {
-//     image: service06,
-//     nombre: "Instalaciones Eléctricas",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Realizamos instalaciones eléctricas completas en proyectos residenciales, comerciales e
-//         industriales, aplicando normas técnicas y garantizando seguridad y eficiencia.
-//       </p>
-//     `,
-//   },
-//   {
-//     image: service01,
-//     nombre: "Fabricación de Tableros Eléctricos",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Diseñamos y fabricamos tableros eléctricos a medida, garantizando seguridad, eficiencia y
-//         cumplimiento de normas técnicas según la necesidad del proyecto.
-//       </p>
-//     `,
-//   },
-//   {
-//     image: service02,
-//     nombre: "Mantenimiento de Tableros Eléctricos",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Realizamos mantenimiento preventivo y correctivo para asegurar el óptimo funcionamiento de
-//         tableros eléctricos en instalaciones residenciales, comerciales e industriales.
-//       </p>
-//     `,
-//   },
-//   {
-//     image: service03,
-//     nombre: "Sistemas de Puesta a Tierra",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Implementamos sistemas de puesta a tierra que protegen equipos e instalaciones ante fallas
-//         eléctricas, cumpliendo normas de seguridad y continuidad operativa.
-//       </p>
-//     `,
-//   },
-//   {
-//     image: service04,
-//     nombre: "Instalación de Electrobombas",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Instalamos electrobombas eficientes y confiables para diferentes aplicaciones garantizando
-//         rendimiento, seguridad y durabilidad en el sistema hidráulico.
-//       </p>
-//     `,
-//   },
-//   {
-//     image: service05,
-//     nombre: "Mantenimiento de Electrobombas",
-//     descripcion: `
-//       <p class="text-gray-600">
-//         Brindamos mantenimiento técnico especializado para prolongar la vida útil de las
-//         electrobombas, prevenir fallas y asegurar un funcionamiento continuo.
-//       </p>
-//     `,
-//   },
+      // elimina <p> vacíos
+      .replace(/<p>\s*<\/p>/g, "")
 
-//   {
-//     image: service07,
-//     nombre: "Servicios Complementarios",
-//     descripcion: `
-//       <p class="mb-2 text-gray-600">
-//         Ofrecemos servicios complementarios para el desarrollo integral de obras e infraestructura:
-//       </p>
-//       <ul class="list-disc list-inside text-gray-600">
-//         <li>Aire acondicionado</li>
-//         <li>Gasfitería</li>
-//         <li>Drywall</li>
-//         <li>Pintura</li>
-//       </ul>
-//     `,
-//   },
-// ];
+      // elimina spans innecesarios
+      .replace(/<\/?span[^>]*>/g, "")
+
+      // aplana UL anidadas (3 niveles → 1)
+      .replace(/<ul>\s*<li>\s*<ul>\s*<li>\s*<ul>/g, "<ul>")
+      .replace(/<\/ul>\s*<\/li>\s*<\/ul>\s*<\/li>\s*<\/ul>/g, "</ul>")
+
+      // asegura que los UL tengan separación
+      .replace(/<ul>/g, '<ul class="list-disc pl-5 mt-2">')
+      .replace(/<li>/g, '<li class="mb-1">')
+  );
+};
 
 export default function ServicioSection() {
   const servicesData = useServicesStore((state) => state.services);
@@ -168,13 +64,29 @@ function ServicioCard({ servicio }: { servicio: Service }) {
       <img src={fullUrlImage} alt={servicio.title} className="w-full h-48 object-cover" />
 
       {/* CONTENIDO */}
-      <div className="p-4 space-y-3">
+      <div className="p-4 flex-col flex gap-y-3">
         <h3 className="font-bold text-lg">{servicio.title}</h3>
-        {/* <p className="text-sm text-gray-600">{servicio.descripcion}</p> */}
 
-        <div
+        {/* <div
           className="text-sm space-y-1"
           dangerouslySetInnerHTML={{ __html: servicio.description }}
+        /> */}
+
+        <div
+          className="
+    text-gray-700 text-[13.5px]
+
+    [&_p]:mb-2
+
+    [&_ul]:list-disc
+    [&_ul]:pl-6
+    [&_ul]:mb-1
+
+    [&_p+ul]:mt-1 
+
+    [&_li]:mb-1
+  "
+          dangerouslySetInnerHTML={{ __html: normalizeHtml(servicio.description) }}
         />
 
         <div className="flex gap-3 border-t pt-4 border-gray-200">
