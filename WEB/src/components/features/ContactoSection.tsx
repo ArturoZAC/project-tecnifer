@@ -1,44 +1,70 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandTiktok,
   IconMessageChatbot,
 } from "@tabler/icons-react";
-import React, { useState } from "react";
 import { BiMapPin, BiPhone } from "react-icons/bi";
 import { RiMvAiLine } from "react-icons/ri";
+import { useForm } from "react-hook-form";
+import { contactSchema, type ContactSchemaType } from "../../schemas/contact.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { toast } from "sonner";
+import { getEnvs } from "../../helpers/getEnvs";
+
+const { VITE_API_URL } = getEnvs();
 
 export default function ContactoSection() {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    mensaje: "",
+  const [isLoading, setIsLoading] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactSchemaType>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const onSubmit = async (data: ContactSchemaType) => {
+    console.log({ data });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar el formulario
-    console.log("Datos del formulario:", formData);
-    alert("¡Mensaje enviado! Te contactaremos pronto.");
+    if (!captchaToken) {
+      toast.warning("Falta verificación de captcha");
+      return;
+    }
 
-    // Limpiar formulario
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      mensaje: "",
-    });
+    setIsLoading(true);
+
+    try {
+      const res = await fetch(`${VITE_API_URL}/enviar-contacto`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, captcha: captchaToken }),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar el formulario");
+
+      toast.success("Formulario enviado con éxito");
+      reset();
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+    } catch (error: any) {
+      toast.error(error?.message || "Error al enviar el formulario");
+    } finally {
+      setIsLoading(false);
+    }
   };
-  console.log(handleSubmit);
 
   return (
     <section className="py-16 px-4">
@@ -137,7 +163,7 @@ export default function ContactoSection() {
           </div>
 
           {/* Formulario de contacto */}
-          <div className="bg-white p-8 rounded-xl shadow-lg">
+          <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded-xl shadow-lg">
             <h3 className="text-2xl font-semibold text-secondary mb-6">Envíanos un Mensaje</h3>
 
             <div className="space-y-6">
@@ -148,14 +174,18 @@ export default function ContactoSection() {
                 <input
                   type="text"
                   id="nombre"
-                  name="nombre"
+                  // name="nombre"
                   required
-                  value={formData.nombre}
-                  onChange={handleInputChange}
+                  // value={formData.nombre}
+                  // onChange={handleInputChange}
+                  {...register("fullName")}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="Tu nombre completo"
                 />
               </div>
+              {errors.fullName && (
+                <p className="text-red-500 mt-1 text-sm">{errors.fullName.message}</p>
+              )}
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -164,14 +194,17 @@ export default function ContactoSection() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  // name="email"
                   required
-                  value={formData.email}
-                  onChange={handleInputChange}
+                  // value={formData.email}
+                  // onChange={handleInputChange}
+                  {...register("email")}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="tu@email.com"
                 />
               </div>
+
+              {errors.email && <p className="text-red-500 mt-1 text-sm">{errors.email.message}</p>}
 
               <div>
                 <label htmlFor="telefono" className="block text-sm font-medium text-gray-700 mb-2">
@@ -180,13 +213,15 @@ export default function ContactoSection() {
                 <input
                   type="tel"
                   id="telefono"
-                  name="telefono"
-                  value={formData.telefono}
-                  onChange={handleInputChange}
+                  // name="telefono"
+                  // value={formData.telefono}
+                  // onChange={handleInputChange}
+                  {...register("phone")}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="+51 999 999 999"
                 />
               </div>
+              {errors.phone && <p className="text-red-500 mt-1 text-sm">{errors.phone.message}</p>}
 
               <div>
                 <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-2">
@@ -194,13 +229,25 @@ export default function ContactoSection() {
                 </label>
                 <textarea
                   id="mensaje"
-                  name="mensaje"
+                  // name="mensaje"
                   required
                   rows={5}
-                  value={formData.mensaje}
-                  onChange={handleInputChange}
+                  // value={formData.mensaje}
+                  // onChange={handleInputChange}
+                  {...register("message")}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
                   placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                />
+              </div>
+              {errors.message && (
+                <p className="text-red-500 mt-1 text-sm">{errors.message.message}</p>
+              )}
+
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                  onChange={(token: any) => setCaptchaToken(token)}
                 />
               </div>
 
@@ -208,17 +255,36 @@ export default function ContactoSection() {
                 type="submit"
                 className="w-full fancy border-secondary border-2 hover:bg-secondary text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
               >
-                <span className="top-key bg-white"></span>
-                <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                  {/* <SiEndeavouros className="w-5 h-5" /> */}
-                  <IconMessageChatbot size={25} />
-                  Enviar Mensaje
-                </span>
-                <span className="bottom-key-1 bg-white"></span>
-                <span className="bottom-key-2 bg-white"></span>
+                {/* <span className="top-key bg-white"></span> */}
+
+                {/* {isLoading ? (
+                  <>
+                    <span className="animate-spin border-2 border-white rounded-full w-5 h-5 border-t-transparent"></span>
+                    <span>Cargando...</span>
+                  </>
+                ) : (
+                  <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
+                    <IconMessageChatbot size={25} />
+                    Enviar Mensaje
+                  </span>
+                )} */}
+
+                {isLoading ? (
+                  <div className="flex items-center gap-2 justify-center">
+                    {/* Spinner */}
+                    <div className="w-5 h-5 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto"></div>
+                  </div>
+                ) : (
+                  <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
+                    <IconMessageChatbot size={25} />
+                    Enviar Mensaje
+                  </span>
+                )}
+                {/* <span className="bottom-key-1 bg-white"></span> */}
+                {/* <span className="bottom-key-2 bg-white"></span> */}
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

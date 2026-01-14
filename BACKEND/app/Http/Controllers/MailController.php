@@ -81,7 +81,7 @@ class MailController extends Controller
     $data = $request->validate([
       'fullName' => 'required|string',
       'email' => 'required|email',
-      // 'phone' => 'required|string',
+      'phone' => 'required|string',
       // 'product' => 'required|string',
       'message' => 'required|string',
       'captcha' => 'required|string',

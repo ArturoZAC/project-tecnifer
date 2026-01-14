@@ -178,8 +178,8 @@
                   role="none">
                   <tr>
                     <td class="esdev-adapt-off" align="left"
-                      style="padding:20px;Margin:0;border-radius:20px 20px 0px 0px;background-color:#E7E7E7"
-                      bgcolor="#E7E7E7">
+                      style="padding:20px;Margin:0;border-radius:20px 20px 0px 0px;background-color:#FE6602"
+                      bgcolor="#FE6602">
                       <table cellpadding="0" cellspacing="0" class="esdev-mso-table" role="none"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:560px">
                         <tr>
@@ -195,7 +195,7 @@
                                           href="#"
                                           style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#F6C6EA;font-size:14px"><img
                                             class="adapt-img"
-                                            src="https://alphamininggroup.com/assets/ALPM-96w6SiSg.png" alt="logo"
+                                            src="https://tecnifer.com.pe/assets/LOGO-WHITE-DUDYQ57F.png" alt="logo"
                                             style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
                                             width="180"></a></td>
                                     </tr>
@@ -319,9 +319,9 @@
                                           <strong>Teléfono:</strong> {{ $data['phone'] }}
                                         </p>
                                       </li>
-                                    @endisset
+                                    @endisset 
 
-                                    @isset($data['product'])
+                                    <!--  @isset($data['product'])
                                       <li
                                         style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;margin-bottom:15px;color:#666666;font-size:14px">
                                         <p
@@ -329,7 +329,7 @@
                                           <strong>Producto de Interés:</strong> {{ $data['product'] }}
                                         </p>
                                       </li>
-                                    @endisset
+                                    @endisset -->
                                     <li
                                       style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Poppins, sans-serif;line-height:21px;margin-bottom:15px;color:#666666;font-size:14px">
                                       <p
@@ -358,8 +358,8 @@
                   style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;border-radius:0px 0px 10px 10px;width:600px"
                   role="none">
                   <tr>
-                    <td align="left" bgcolor="#BD8F4D"
-                      style="Margin:0;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;background-color:#BD8F4D;border-radius:0px 0px 15px 20px">
+                    <td align="left" bgcolor="#050636"
+                      style="Margin:0;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px;background-color:#050636;border-radius:0px 0px 15px 20px">
                       <table cellpadding="0" cellspacing="0" width="100%" role="none"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
@@ -373,17 +373,17 @@
                                     <tr class="links">
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0">
-                                        <a target="_blank" href="https://alphamininggroup.com/"
+                                        <a target="_blank" href="https://tecnifer.com.pe/"
                                           style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;display:block;font-family:Poppins, sans-serif;color:#ffffff;font-size:12px;font-weight:normal">Nosotros</a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0">
-                                        <a target="_blank" href="https://alphamininggroup.com/#servicios"
+                                        <a target="_blank" href="https://tecnifer.com.pe/#servicios"
                                           style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;display:block;font-family:Poppins, sans-serif;color:#ffffff;font-size:12px;font-weight:normal">Servicios</a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0">
-                                        <a target="_blank" href="https://alphamininggroup.com/#contacto"
+                                        <a target="_blank" href="https://tecnifer.com.pe/#contacto"
                                           style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;display:block;font-family:Poppins, sans-serif;color:#ffffff;font-size:12px;font-weight:normal">Contacto</a>
                                       </td>
                                     </tr>
