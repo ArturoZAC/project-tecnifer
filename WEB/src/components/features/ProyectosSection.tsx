@@ -1,5 +1,5 @@
 // import { motion } from "motion/react";
-import { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Proyecto1 from "../../assets/proyectos/trabajo01-tec.webp";
 import Proyecto2 from "../../assets/proyectos/trabajo02-tec.webp";
 import Proyecto3 from "../../assets/proyectos/trabajo03-tec.webp";
@@ -9,8 +9,10 @@ import Proyecto6 from "../../assets/proyectos/trabajo06-tec.webp";
 import Proyecto7 from "../../assets/proyectos/add01.webp";
 import Proyecto8 from "../../assets/proyectos/add02.webp";
 import Proyecto9 from "../../assets/proyectos/add03.webp";
-import Lightbox from "yet-another-react-lightbox";
+// import Lightbox from "yet-another-react-lightbox";
 import { IconCircleDashedCheck } from "@tabler/icons-react";
+
+const Lightbox = React.lazy(() => import("yet-another-react-lightbox"));
 
 const images = [
   Proyecto1,
@@ -60,12 +62,24 @@ export default function ProyectosSection() {
       </div>
 
       {/* LIGHTBOX */}
-      <Lightbox
+      {/* <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={index}
         slides={images.map((img) => ({ src: img }))}
-      />
+      /> */}
+
+      {/* LIGHTBOX lazy */}
+      {open && (
+        <Suspense fallback={null}>
+          <Lightbox
+            open={open}
+            close={() => setOpen(false)}
+            index={index}
+            slides={images.map((img) => ({ src: img }))}
+          />
+        </Suspense>
+      )}
     </>
   );
 }
