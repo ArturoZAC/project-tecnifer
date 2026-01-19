@@ -241,7 +241,7 @@ export default function HeaderV0() {
               whileTap={{ scale: 0.95 }}
             >
               <span className="top-key bg-primary"></span>
-              <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
+              <span className="text group-hover:!ps-2 text-white !ps-2 flex items-center gap-2 justify-center">
                 <IconBrandWhatsapp size={20} />
                 <span>Cotizar Ahora</span>
               </span>
@@ -257,7 +257,7 @@ export default function HeaderV0() {
               onClick={() => scrollToElement("#contacto", 100)}
             >
               <span className={`top-key ${isTop ? "" : "bg-secondary"}`}></span>
-              <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
+              <span className="text group-hover:!ps-2 text-white !ps-2 flex items-center gap-2 justify-center">
                 Contactar
               </span>
               <span className={`bottom-key-1 ${isTop ? "" : "bg-secondary"}`}></span>

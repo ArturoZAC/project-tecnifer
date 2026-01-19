@@ -10,16 +10,17 @@ import { RiMvAiLine } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import { contactSchema, type ContactSchemaType } from "../../schemas/contact.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { Suspense, useState, useRef } from "react";
+// import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "sonner";
 import { getEnvs } from "../../helpers/getEnvs";
+const ReCAPTCHA = React.lazy(() => import("react-google-recaptcha"));
 
 const { VITE_API_URL } = getEnvs();
 
 export default function ContactoSection() {
   const [isLoading, setIsLoading] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<any>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const {
     register,
@@ -243,39 +244,39 @@ export default function ContactoSection() {
                 <p className="text-red-500 mt-1 text-sm">{errors.message.message}</p>
               )}
 
-              <div className="flex justify-center">
+              {/* <div className="flex justify-center">
                 <ReCAPTCHA
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                   onChange={(token: any) => setCaptchaToken(token)}
                 />
+              </div> */}
+
+              <div className="flex justify-center">
+                <Suspense
+                  fallback={
+                    <div className="w-full h-24 bg-gray-200 animate-pulse rounded-lg"></div>
+                  }
+                >
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                    onChange={(token: any) => setCaptchaToken(token)}
+                  />
+                </Suspense>
               </div>
 
               <button
                 type="submit"
                 className="w-full fancy border-secondary border-2 hover:bg-secondary text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
               >
-                {/* <span className="top-key bg-white"></span> */}
-
-                {/* {isLoading ? (
-                  <>
-                    <span className="animate-spin border-2 border-white rounded-full w-5 h-5 border-t-transparent"></span>
-                    <span>Cargando...</span>
-                  </>
-                ) : (
-                  <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                    <IconMessageChatbot size={25} />
-                    Enviar Mensaje
-                  </span>
-                )} */}
-
                 {isLoading ? (
                   <div className="flex items-center gap-2 justify-center">
                     {/* Spinner */}
                     <div className="w-5 h-5 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto"></div>
                   </div>
                 ) : (
-                  <span className="text group-hover:!ps-2 text-secondary ps-2 Poppins-Font flex items-center gap-2 justify-center">
+                  <span className="text group-hover:!ps-2 text-secondary ps-2 flex items-center gap-2 justify-center">
                     <IconMessageChatbot size={25} />
                     Enviar Mensaje
                   </span>

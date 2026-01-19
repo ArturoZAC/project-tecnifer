@@ -108,6 +108,8 @@ export default function Inicio() {
                 src={AsideNosotros}
                 alt="Equipo técnico TECNIFER"
                 className="w-full rounded-2xl"
+                width="679"
+                height="679"
               />
             </motion.div>
           </section>
@@ -160,7 +162,7 @@ export default function Inicio() {
               className="px-4 py-2 group hover:bg-primary bg-transparent fancy hover:before:bg-white before:bg-white text-white text-sm border-2 border-white  hover:text-white duration-300 transition-colors max-lg:text-sm"
             >
               <span className="top-key bg-secondary group-hover:bg-secondary"></span>
-              <span className="text text-white Poppins-Font ps-8">Contactar</span>
+              <span className="text text-white ps-8">Contactar</span>
               <span className="bottom-key-1 bg-secondary"></span>
               <span className="bottom-key-2 bg-secondary"></span>
             </button>
@@ -190,26 +192,6 @@ export default function Inicio() {
           </Container>
         </section>
 
-        {/* <section className="w-full py-5 bg-primary text-white">
-          <Container className="flex flex-col items-center gap-3">
-            <p className="text-xl md:text-2xl lg:text-3xl text-center font-medium">
-              Contáctanos hoy y cuéntanos tu idea. Nuestro equipo de arquitectos está listo para
-              brindarte una atención personalizada y soluciones creativas a la medida de tus
-              necesidades.
-            </p>
-            <p className="text-center my-2">¡Tu próximo proyecto comienza con una conversación!</p>
-            <button
-              onClick={() => scrollToElement("#contacto", 100)}
-              className="px-4 py-2 w-fit fancy text-black hover:bg-secondary hover:text-white hover:before:bg-white border-2 border-white before:bg-white duration-300 transition-colors"
-            >
-              <span className="top-key bg-primary group-hover:bg-secondary"></span>
-              <span className="text text-white Poppins-Font ps-8">Contáctanos</span>
-              <span className="bottom-key-1 bg-primary"></span>
-              <span className="bottom-key-2 bg-primary"></span>
-            </button>
-          </Container>
-        </section> */}
-
         <section className="w-full py-16 bg-primary text-white">
           <Container className="flex flex-col items-center gap-3">
             <p className="text-xl md:text-2xl lg:text-3xl text-center font-medium">
@@ -228,7 +210,7 @@ export default function Inicio() {
               className="px-4 py-2 w-fit fancy text-black hover:bg-secondary hover:text-white hover:before:bg-white border-2 border-white before:bg-white duration-300 transition-colors"
             >
               <span className="top-key bg-primary group-hover:bg-secondary"></span>
-              <span className="text text-white Poppins-Font ps-8">Contáctanos</span>
+              <span className="text text-white ps-8">Contáctanos</span>
               <span className="bottom-key-1 bg-primary"></span>
               <span className="bottom-key-2 bg-primary"></span>
             </button>
