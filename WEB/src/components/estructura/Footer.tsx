@@ -153,14 +153,14 @@ export default function Footer() {
                   <div className="flex flex-col">
                     <a
                       href={`mailto:${contactoInfo.email}`}
-                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                      className="text-white text-sm hover:text-blue-300 transition-colors px-3 py-2 block"
                     >
                       {contactoInfo.email}
                     </a>
 
                     <a
                       href={`mailto:${contactoInfo.email2}`}
-                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                      className="text-white text-sm hover:text-blue-300 transition-colors px-3 py-2 block"
                     >
                       {contactoInfo.email2}
                     </a>
@@ -175,13 +175,13 @@ export default function Footer() {
                   <div className="flex flex-col">
                     <a
                       href={`tel:${contactoInfo.telefono}`}
-                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                      className="text-white text-sm hover:text-blue-300 transition-colors px-3 py-2 block"
                     >
                       {contactoInfo.telefono}
                     </a>
                     <a
                       href={`tel:${contactoInfo.telefono2}`}
-                      className="text-white text-sm hover:text-blue-300 transition-colors"
+                      className="text-white text-sm hover:text-blue-300 transition-colors px-3 py-2 block"
                     >
                       {contactoInfo.telefono2}
                     </a>

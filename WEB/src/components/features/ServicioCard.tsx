@@ -61,7 +61,12 @@ function ServicioCard({ servicio }: { servicio: Service }) {
       className="bg-white rounded-xl shadow-lg overflow-hidden"
     >
       {/* IMAGEN */}
-      <img src={fullUrlImage} alt={servicio.title} className="w-full h-48 object-cover" />
+      <img
+        src={fullUrlImage}
+        alt={servicio.title}
+        className="w-full h-48 object-cover"
+        loading="lazy"
+      />
 
       {/* CONTENIDO */}
       <div className="p-4 flex-col flex gap-y-3">

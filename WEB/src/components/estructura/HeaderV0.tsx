@@ -181,15 +181,22 @@ export default function HeaderV0() {
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
             {isTop ? (
-              <img src={Logo || "/placeholder.svg"} alt="logo" className="max-w-64" />
+              <img
+                src={Logo || "/placeholder.svg"}
+                alt="logo"
+                className="max-w-64"
+                width={256}
+                height={50}
+              />
             ) : (
-              <img src={LogoWhite || "/placeholder.svg"} alt="logo" className="max-w-64" />
+              <img
+                src={LogoWhite || "/placeholder.svg"}
+                alt="logo"
+                className="max-w-64"
+                width={256}
+                height={50}
+              />
             )}
-            {/* <img src={Logo || "/placeholder.svg"} alt="logo" className="w-20 lg:w-24" /> */}
-            {/* <div className={`hidden sm:block ${isTop ? "text-gray-700" : "text-white"}`}>
-              <div className="font-bold text-lg">Aquitecture</div>
-              <div className="text-xs opacity-75">Soluciones Profesionales</div>
-            </div> */}
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -223,24 +230,6 @@ export default function HeaderV0() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* <motion.a
-              href="tel:+15551234567"
-              className={`flex items-center gap-2 fancy px-4 bg-primary py-2 rounded-full border-2 transition-all duration-200 ${
-                isTop
-                  ? "border-secondary text-blue-600 hover:bg-secondary hover:text-white"
-                  : "border-white text-white hover:bg-primary hover:text-black"
-              }`}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="top-key bg-primary"></span>
-              <span className="text group-hover:!ps-2 text-white !ps-2 Poppins-Font flex items-center gap-2 justify-center">
-                <IconBrandWhatsapp size={20} />
-                <span>Cotizar Ahora</span>
-              </span>
-              <span className="bottom-key-1 bg-primary"></span>
-              <span className="bottom-key-2 bg-primary"></span>
-            </motion.a> */}
-
             <motion.button
               type="button"
               onClick={() => enviarWhatsapp()}

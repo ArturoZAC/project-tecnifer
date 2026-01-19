@@ -30,7 +30,7 @@ export default function PublicLayout() {
         className="
     fixed 
     bottom-6 right-6 
-    bg-green-600 hover:bg-green-700 
+    bg-green-700 hover:bg-green-800 
     text-white font-medium 
     px-4 py-3
     sm:px-6 sm:py-4 

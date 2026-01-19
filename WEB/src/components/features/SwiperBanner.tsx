@@ -10,30 +10,6 @@ import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok } from "@tabler/
 export default function SwiperBanner() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // const slides = [
-  //   {
-  //     id: 1,
-  //     title: "Instalaciones eléctricas profesionales",
-  //     subtitle:
-  //       "Desarrollamos e implementamos instalaciones eléctricas seguras y eficientes, garantizando continuidad operativa y cumplimiento normativo.",
-  //     image: Banner1,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Servicios complementarios para tu infraestructura",
-  //     subtitle:
-  //       "Ofrecemos soluciones en aire acondicionado, gasfitería, drywall y pintura, completando proyectos integrales con calidad técnica.",
-  //     image: Banner2,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Electrobombas que trabajan sin detenerse",
-  //     subtitle:
-  //       "Instalación y mantenimiento de electrobombas para un funcionamiento eficiente y duradero.",
-  //     image: Banner3,
-  //   },
-  // ];
-
   const slides = [
     {
       id: 1,
@@ -105,14 +81,41 @@ export default function SwiperBanner() {
             // style={slide.image ? {} : { background: slide.background }}
           >
             {/* Background Image */}
-            {slide.image && (
+            {/* {slide.image && (
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${slide.image})` }}
               >
                 <div className="absolute inset-0 bg-black/80"></div>
               </div>
+            )} */}
+
+            {slide.image && index === 0 ? (
+              <div className="absolute inset-0">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  width={1920}
+                  height={1080}
+                  fetchPriority="high"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/80"></div>
+              </div>
+            ) : (
+              <div className="absolute inset-0">
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  width={1920}
+                  height={1080}
+                  loading="lazy" // <--- Lazy load
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/80"></div>
+              </div>
             )}
+
             {/* Content */}
             <div className="flex items-center justify-center h-full relative z-10">
               <div className="text-center text-white px-8 max-w-4xl">
@@ -136,28 +139,49 @@ export default function SwiperBanner() {
                     index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
-                  <a
+                  {/* <a
                     href="https://www.facebook.com/share/1CixsxYa8f/"
                     className="hover:text-secondary duration-300 transition-all"
                     target="_blank"
+                    aria-label="Compartir en Facebook"
                   >
-                    {/* <FaFacebook size={20} /> */}
                     <IconBrandFacebook size={20} />
                   </a>
                   <a
                     href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
                     className="hover:text-secondary duration-300 transition-all"
                     target="_blank"
+                    aria-label="Visitar Instagram"
                   >
-                    {/* <FaInstagram size={20} /> */}
                     <IconBrandInstagram size={20} />
                   </a>
                   <a
                     href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
                     className="hover:text-secondary duration-300 transition-all"
                     target="_blank"
+                    aria-label="Visitar TikTok"
                   >
-                    {/* <FaTiktok size={20} /> */}
+                    <IconBrandTiktok size={20} />
+                  </a> */}
+                  <a
+                    href="https://www.facebook.com/share/1CixsxYa8f/"
+                    target="_blank"
+                    aria-label="Visitar en Facebook"
+                  >
+                    <IconBrandFacebook size={20} />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
+                    target="_blank"
+                    aria-label="Visitar Instagram"
+                  >
+                    <IconBrandInstagram size={20} />
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
+                    target="_blank"
+                    aria-label="Visitar TikTok"
+                  >
                     <IconBrandTiktok size={20} />
                   </a>
                 </nav>
@@ -198,6 +222,7 @@ export default function SwiperBanner() {
       <button
         onClick={prevSlide}
         className="absolute left-1 md:left-5 lg:left-8 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-secondary transition-all duration-300 hover:scale-110 z-30"
+        aria-label="Slide anterior"
       >
         <GrFormPrevious size={40} />
         {/*
@@ -210,6 +235,7 @@ export default function SwiperBanner() {
       <button
         onClick={nextSlide}
         className="absolute right-1 md:right-5 lg:right-8 top-1/2 transform -translate-y-1/2 text-white/80 hover:text-secondary transition-all duration-300 hover:scale-110 z-30"
+        aria-label="Siguiente slide"
       >
         <GrFormNext size={40} />
         {/*
