@@ -324,7 +324,13 @@ export default function HeaderV0() {
                 {/* Mobile Menu Header */}
                 <div className="flex justify-between items-center mb-6">
                   <div className="flex items-center gap-3">
-                    <img src={Logo || "/placeholder.svg"} alt="logo" className="w-52" />
+                    <img
+                      src={Logo || "/placeholder.svg"}
+                      alt="logo"
+                      className="w-52"
+                      width={256}
+                      height={50}
+                    />
                     {/* <div>
                       <div className="font-bold text-gray-800">Arquitecture</div>
                       <div className="text-xs text-gray-500">Soluciones Profesionales</div>

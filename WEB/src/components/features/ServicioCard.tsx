@@ -38,6 +38,16 @@ const normalizeHtml = (html: string) => {
 export default function ServicioSection() {
   const servicesData = useServicesStore((state) => state.services);
 
+  if (!servicesData || servicesData.length === 0) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="h-48 bg-gray-200 rounded-xl animate-pulse"></div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
       {servicesData?.map((servicio, index) => (
@@ -66,6 +76,8 @@ function ServicioCard({ servicio }: { servicio: Service }) {
         alt={servicio.title}
         className="w-full h-48 object-cover"
         loading="lazy"
+        width={392}
+        height={192}
       />
 
       {/* CONTENIDO */}

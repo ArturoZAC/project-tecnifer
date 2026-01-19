@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
-import Logo from "../../assets/logo1.png"
-import Container from "../features/Container"
+import { useEffect, useState } from "react";
+import Logo from "../../assets/logo1.png";
+import Container from "../features/Container";
 import { AnimatePresence, motion } from "motion/react";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsX } from "react-icons/bs";
 
 export default function Header() {
-
   const [isTop, setIsTop] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,10 +18,10 @@ export default function Header() {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -34,8 +33,8 @@ export default function Header() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const menuItems = [
@@ -43,7 +42,7 @@ export default function Header() {
     { href: "#nosotros", label: "Nosotros" },
     { href: "#servicios", label: "Servicios" },
     { href: "#proyectos", label: "Proyectos" },
-    { href: "#contacto", label: "Contacto" }
+    { href: "#contacto", label: "Contacto" },
   ];
 
   const handleMenuClick = (href: string) => {
@@ -51,7 +50,7 @@ export default function Header() {
     // Scroll suave a la sección
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -61,7 +60,7 @@ export default function Header() {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`w-full py-2 fixed z-50 ${isTop ? 'bg-[#FDFDFD] shadow-md text-black' : 'bg-transparent text-white'} duration-300 transition-all`}
+        className={`w-full py-2 fixed z-50 ${isTop ? "bg-[#FDFDFD] shadow-md text-black" : "bg-transparent text-white"} duration-300 transition-all`}
       >
         <Container className="flex justify-between items-center">
           <img src={Logo} alt="logo" className="w-24" />
@@ -75,8 +74,9 @@ export default function Header() {
                   e.preventDefault();
                   handleMenuClick(item.href);
                 }}
-                className={`relative transition-colors duration-200 hover:text-blue-400 ${isTop ? 'hover:text-blue-600' : 'hover:text-blue-300'
-                  }`}
+                className={`relative transition-colors duration-200 hover:text-blue-400 ${
+                  isTop ? "hover:text-blue-600" : "hover:text-blue-300"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -188,9 +188,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.5 }}
                 >
-                  <p className="text-sm text-gray-500 text-center">
-                    ¿Tienes alguna pregunta?
-                  </p>
+                  <p className="text-sm text-gray-500 text-center">¿Tienes alguna pregunta?</p>
                   <motion.button
                     className="w-full mt-3 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
                     whileHover={{ scale: 1.02 }}
@@ -205,5 +203,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

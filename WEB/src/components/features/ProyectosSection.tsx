@@ -48,6 +48,8 @@ export default function ProyectosSection() {
               alt={`Trabajo ${i + 1}`}
               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
+              width={390}
+              height={256}
             />
 
             {/* OVERLAY */}

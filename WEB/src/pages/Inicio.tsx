@@ -1,68 +1,71 @@
 import Container from "../components/features/Container";
 import SwiperBanner from "../components/features/SwiperBanner";
-
 import AsideNosotros from "../assets/pruebaNosotros.webp";
-// import AsideNosotros from "../assets/images/asideNosotros.webp";
-// import Edificios from "../assets/images/edificios.png"
 
 import { motion } from "motion/react";
-import ServicioSection from "../components/features/ServicioCard";
-import ProyectosSection from "../components/features/ProyectosSection";
-import ContactoSection from "../components/features/ContactoSection";
+// import ServicioSection from "../components/features/ServicioCard";
+// import ProyectosSection from "../components/features/ProyectosSection";
+// import ContactoSection from "../components/features/ContactoSection";
 import { scrollToElement } from "../logic/scrollToElement";
 import { IconEye, IconTargetArrow } from "@tabler/icons-react";
+import { useEffect, useRef, useState } from "react";
+
+// Lazy imports
+const ServicioSectionLazy = () => import("../components/features/ServicioCard");
+const ProyectosSectionLazy = () => import("../components/features/ProyectosSection");
+const ContactoSectionLazy = () => import("../components/features/ContactoSection");
 
 export default function Inicio() {
+  const [ServicioSection, setServicioSection] = useState<any>(null);
+  const [ProyectosSection, setProyectosSection] = useState<any>(null);
+  const [ContactoSection, setContactoSection] = useState<any>(null);
+
+  const serviciosRef = useRef<HTMLDivElement>(null);
+  const proyectosRef = useRef<HTMLDivElement>(null);
+  const contactoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observerServicios = new IntersectionObserver(
+      async ([entry]) => {
+        if (entry.isIntersecting && !ServicioSection) {
+          const mod = await ServicioSectionLazy();
+          setServicioSection(() => mod.default);
+          observerServicios.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const observerProyectos = new IntersectionObserver(
+      async ([entry]) => {
+        if (entry.isIntersecting && !ProyectosSection) {
+          const mod = await ProyectosSectionLazy();
+          setProyectosSection(() => mod.default);
+          observerProyectos.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const observerContacto = new IntersectionObserver(
+      async ([entry]) => {
+        if (entry.isIntersecting && !ContactoSection) {
+          const mod = await ContactoSectionLazy();
+          setContactoSection(() => mod.default);
+          observerContacto.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (serviciosRef.current) observerServicios.observe(serviciosRef.current);
+    if (proyectosRef.current) observerProyectos.observe(proyectosRef.current);
+    if (contactoRef.current) observerContacto.observe(contactoRef.current);
+  }, [ServicioSection, ProyectosSection, ContactoSection]);
   return (
     <div className="overflow-hidden">
       <SwiperBanner />
       <section className="w-full bg-slate-50" id="nosotros">
-        {/* <Container className="py-10 space-y-6">
-          <section className="flex gap-4 items-center lg:flex-row flex-col">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-8 lg:w-1/2 w-full"
-            >
-              <h2 className="text-4xl font-bold text-black">
-                ¿Porque <span className="text-primary">elegirnos?</span>
-              </h2>
-              <div className="space-y-3">
-                <p>
-                  En <strong>Arquitecture</strong>, diseñamos espacios que trascienden lo estético:
-                  creamos soluciones arquitectónicas que inspiran, funcionan y perduran en el
-                  tiempo.
-                </p>
-                <p>
-                  Somos un equipo apasionado de arquitectos, diseñadores y profesionales técnicos
-                  con una visión clara: transformar ideas en estructuras que mejoren la calidad de
-                  vida de quienes las habitan. Desde nuestra fundación en 2020, hemos trabajado en
-                  proyectos residenciales, comerciales, corporativos y urbanos, destacándonos por
-                  nuestra atención al detalle, compromiso con la sostenibilidad y enfoque humano en
-                  cada diseño.
-                </p>
-                <p>
-                  Creemos que la arquitectura no solo moldea ciudades, sino también historias. Por
-                  eso, colaboramos de cerca con nuestros clientes en cada etapa del proceso,
-                  entendiendo sus necesidades y convirtiéndolas en espacios únicos y funcionales,
-                  donde la forma y la función se encuentran en equilibrio
-                </p>
-              </div>
-            </motion.div>
-            <div className="lg:w-1/2 w-full">
-              <motion.img
-                src={AsideNosotros}
-                alt="AsideNosotros"
-                className="w-full rounded-2xl"
-                initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
-          </section>
-        </Container> */}
-
         {/* <Container className="py-14 space-y-14"> */}
         <Container className="py-14 space-y-14 relative">
           <div className="absolute top-20 -left-16 w-36 h-36 bg-primary/30 rounded-full blur-3xl -z-9" />
@@ -108,8 +111,8 @@ export default function Inicio() {
                 src={AsideNosotros}
                 alt="Equipo técnico TECNIFER"
                 className="w-full rounded-2xl"
-                width="679"
-                height="679"
+                width={679}
+                height={679}
               />
             </motion.div>
           </section>
@@ -169,7 +172,7 @@ export default function Inicio() {
           </Container>
         </section>
 
-        <section className="bg-slate-50 py-9" id="servicios">
+        <section className="bg-slate-50 py-9" id="servicios" ref={serviciosRef}>
           <Container className="w-full">
             <motion.h2
               className="text-4xl font-bold text-center"
@@ -188,7 +191,8 @@ export default function Inicio() {
               Protegemos y optimizamos tus instalaciones eléctricas.
             </motion.p>
 
-            <ServicioSection />
+            {/* <ServicioSection /> */}
+            {ServicioSection && <ServicioSection />}
           </Container>
         </section>
 
@@ -217,7 +221,7 @@ export default function Inicio() {
           </Container>
         </section>
 
-        <section className="w-full py-9 bg-slate-50" id="proyectos">
+        <section className="w-full py-9 bg-slate-50" id="proyectos" ref={proyectosRef}>
           <Container className="space-y-8">
             <div className="space-y-3">
               <h2 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl">
@@ -232,14 +236,16 @@ export default function Inicio() {
               </p>
             </div>
 
-            <ProyectosSection />
+            {/* <ProyectosSection /> */}
+            {ProyectosSection && <ProyectosSection />}
           </Container>
         </section>
 
-        <section className="w-full bg-slate-50 text-black" id="contacto">
+        <section className="w-full bg-slate-50 text-black" id="contacto" ref={contactoRef}>
           <Container>
             <section className="flex lg:flex-row flex-col gap-5">
-              <ContactoSection />
+              {/* <ContactoSection /> */}
+              {ContactoSection && <ContactoSection />}
             </section>
           </Container>
         </section>

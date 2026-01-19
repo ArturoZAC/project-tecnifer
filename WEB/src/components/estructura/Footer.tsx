@@ -67,7 +67,13 @@ export default function Footer() {
           <section className="w-full lg:col-span-1">
             <div className="mb-4">
               <div className="w-full rounded-lg flex items-center justify-start mb-4">
-                <img src={LogoFooter} alt="logo" className="w-full h-full max-w-56" />
+                <img
+                  src={LogoFooter}
+                  alt="logo"
+                  className="w-full h-full max-w-56"
+                  width={224}
+                  height={43}
+                />
               </div>
             </div>
             <p className="text-blue-100 text-sm leading-relaxed mb-6">
@@ -218,7 +224,7 @@ export default function Footer() {
                 <span>Realizado por </span>
                 <span>
                   {" "}
-                  <img src={LogosPeru} alt="w" className="w-5" />{" "}
+                  <img src={LogosPeru} alt="w" className="w-5" width={20} height={20} />{" "}
                 </span>
               </a>
             </div>
