@@ -132,6 +132,7 @@ export default function ContactoSection() {
                   href="https://www.facebook.com/share/1CixsxYa8f/"
                   target="_blank"
                   className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-200"
+                  aria-label="Facebook"
                 >
                   <IconBrandFacebook className="w-6 h-6" />
                 </a>
@@ -140,6 +141,7 @@ export default function ContactoSection() {
                   href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
                   target="_blank"
                   className="bg-pink-600 hover:bg-pink-700 text-white p-3 rounded-full transition-colors duration-200"
+                  aria-label="Instagram"
                 >
                   <IconBrandInstagram className="w-6 h-6" />
                 </a>
@@ -147,6 +149,7 @@ export default function ContactoSection() {
                   href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
                   target="_blank"
                   className="bg-zinc-500 hover:bg-zinc-600 text-white p-3 rounded-full transition-colors duration-200"
+                  aria-label="Tiktok"
                 >
                   <IconBrandTiktok className="w-6 h-6" />
                 </a>
@@ -155,7 +158,7 @@ export default function ContactoSection() {
 
             {/* Mensaje adicional */}
             <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h4 className="font-semibold text-secondary mb-2">¿Prefieres llamarnos?</h4>
+              <h3 className="font-semibold text-secondary mb-2">¿Prefieres llamarnos?</h3>
               <p className="text-gray-600 text-sm">
                 Estamos disponibles de lunes a viernes de 9:00 AM a 6:00 PM. No dudes en
                 contactarnos para cualquier consulta.

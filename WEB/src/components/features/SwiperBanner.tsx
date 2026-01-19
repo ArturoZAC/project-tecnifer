@@ -139,30 +139,6 @@ export default function SwiperBanner() {
                     index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
-                  {/* <a
-                    href="https://www.facebook.com/share/1CixsxYa8f/"
-                    className="hover:text-secondary duration-300 transition-all"
-                    target="_blank"
-                    aria-label="Compartir en Facebook"
-                  >
-                    <IconBrandFacebook size={20} />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/tecniferperu?igsh=cHVwdTN0dHhvcWp2"
-                    className="hover:text-secondary duration-300 transition-all"
-                    target="_blank"
-                    aria-label="Visitar Instagram"
-                  >
-                    <IconBrandInstagram size={20} />
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@tecni_ferreafanos?_r=1&_t=ZS-92r5eXFU070"
-                    className="hover:text-secondary duration-300 transition-all"
-                    target="_blank"
-                    aria-label="Visitar TikTok"
-                  >
-                    <IconBrandTiktok size={20} />
-                  </a> */}
                   <a
                     href="https://www.facebook.com/share/1CixsxYa8f/"
                     target="_blank"
