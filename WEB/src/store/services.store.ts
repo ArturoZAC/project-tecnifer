@@ -38,6 +38,6 @@ export const useServicesStore = create<ServicesState & ServicesActions>()(
   devtools(
     persist(servicesApi, {
       name: "services-storage",
-    })
-  )
+    }),
+  ),
 );

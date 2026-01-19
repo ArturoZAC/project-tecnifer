@@ -257,7 +257,7 @@ export default function Inicio() {
         <section className="w-full bg-slate-50 text-black" id="contacto">
           <Container>
             <section className="flex lg:flex-row flex-col gap-5">
-              <ContactoSection />
+              {/* <ContactoSection /> */}
             </section>
           </Container>
         </section>

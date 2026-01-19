@@ -40,8 +40,8 @@ export default function ServicioSection() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
-      {servicesData.map((servicio, index) => (
-        <ServicioCard servicio={servicio} /* numero={index} */ key={index} />
+      {servicesData?.map((servicio, index) => (
+        <ServicioCard servicio={servicio} key={index} />
       ))}
     </div>
   );

@@ -26,7 +26,7 @@ export default function Footer() {
   //   { nombre: "Servicios Complementarios", link: "#servicios" },
   // ];
 
-  const newServicesFormat = services.map((service) => ({
+  const newServicesFormat = services?.map((service) => ({
     nombre: service.title,
     link: "#servicios",
   }));
